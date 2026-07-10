@@ -197,11 +197,22 @@
       });
     });
 
-    // detail page thumbnail swap (cosmetic)
+    // stagger cosmetic thumbnails so each card reveals a different bottle
+    var cosThumbs = document.querySelectorAll(".cos-thumb");
+    if (cosThumbs.length > 1) {
+      cosThumbs.forEach(function (img, i) {
+        img.style.objectPosition = (i / (cosThumbs.length - 1) * 100) + "% center";
+      });
+    }
+
+    // detail page thumbnail swap
+    var mainImage = document.getElementById("mainImage");
     document.querySelectorAll(".thumbs .th").forEach(function (th) {
       th.addEventListener("click", function () {
         document.querySelectorAll(".thumbs .th").forEach(function (t) { t.classList.remove("active"); });
         th.classList.add("active");
+        var img = th.querySelector("img");
+        if (mainImage && img) mainImage.src = img.getAttribute("src");
       });
     });
   }

@@ -199,10 +199,14 @@
         card.classList.toggle("hide", !match);
       });
     },
-    // detail thumbnail
-    thumb: function (el) {
+    // detail thumbnail (optionally swaps the main image)
+    thumb: function (el, src) {
       el.parentElement.querySelectorAll(".thumb").forEach(function (t) { t.classList.remove("active"); });
       el.classList.add("active");
+      if (src) {
+        var main = document.getElementById("mainImg");
+        if (main) main.src = src;
+      }
     },
     playVideo: function () {
       alert("Tanıtım videosu yakında burada oynatılacaktır.");

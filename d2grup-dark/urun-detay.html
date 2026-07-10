@@ -22,18 +22,14 @@
     <!-- Visual -->
     <div class="detail-visual">
       <div class="detail-main-img">
-        <div class="device">
-          <div class="screen"><small>FROZEN FACE</small><b>D2</b></div>
-          <div class="neck"></div>
-          <div class="body"></div>
-        </div>
-        <span class="ph-label" style="position:absolute;bottom:16px;left:16px;font-size:10px;letter-spacing:2px;color:var(--muted-2);text-transform:uppercase">Frozen Face · Ürün Görseli</span>
+        <img id="mainImg" src="assets/hero-device.png" alt="Frozen Face ürün görseli">
+        <span class="ph-label" style="position:absolute;bottom:16px;left:16px;font-size:10px;letter-spacing:2px;color:var(--muted-2);text-transform:uppercase;z-index:3">Frozen Face</span>
       </div>
       <div class="thumbs">
-        <div class="thumb active" onclick="D2.thumb(this)">Ön</div>
-        <div class="thumb" onclick="D2.thumb(this)">Yan</div>
-        <div class="thumb" onclick="D2.thumb(this)">Ekran</div>
-        <div class="thumb" onclick="D2.thumb(this)">Başlık</div>
+        <div class="thumb active" onclick="D2.thumb(this,'assets/hero-device.png')"><img src="assets/hero-device.png" alt="Ön görünüm"></div>
+        <div class="thumb" onclick="D2.thumb(this,'assets/cat-yuz.png')"><img src="assets/cat-yuz.png" alt="Uygulama"></div>
+        <div class="thumb" onclick="D2.thumb(this,'assets/prod-fotona.png')"><img src="assets/prod-fotona.png" alt="Cihaz detayı"></div>
+        <div class="thumb" onclick="D2.thumb(this,'assets/experience.png')"><img src="assets/experience.png" alt="Kullanım sahnesi"></div>
       </div>
     </div>
 
@@ -93,10 +89,10 @@
       <a href="urunler.html" class="btn btn-ghost">TÜM ÜRÜNLER <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
     <div class="prod-grid">
-      <a href="urun-detay.html" class="prod-card"><div class="prod-visual"><div class="mini-device"></div></div><div class="prod-info"><span class="brand">D2 Grup · Yüz</span><h4>Frozen Eyes</h4><p>Göz çevresi bakımı; koyu halka ve şişlik karşıtı.</p><span class="prod-link">İNCELE →</span></div></a>
-      <a href="urun-detay.html" class="prod-card"><div class="prod-visual"><div class="mini-device"></div></div><div class="prod-info"><span class="brand">D2 Grup · Yüz</span><h4>Bubble Up</h4><p>Hidrodermabrazyon ve oksijen bakımı.</p><span class="prod-link">İNCELE →</span></div></a>
-      <a href="urun-detay.html" class="prod-card"><div class="prod-visual"><div class="mini-device"></div></div><div class="prod-info"><span class="brand">D2 Grup · Yüz</span><h4>CACI</h4><p>Mikroakım ile non-invaziv yüz germe.</p><span class="prod-link">İNCELE →</span></div></a>
-      <a href="urun-detay.html" class="prod-card"><div class="prod-visual"><div class="mini-device"></div></div><div class="prod-info"><span class="brand">D2 Grup · Yüz &amp; Vücut</span><h4>Ultrawave</h4><p>HIFU / odaklı ultrason ile lifting.</p><span class="prod-link">İNCELE →</span></div></a>
+      <a href="urun-detay.html" class="prod-card"><div class="prod-visual"><img src="assets/cat-yuz.png" alt="Frozen Eyes"></div><div class="prod-info"><span class="brand">D2 Grup · Yüz</span><h4>Frozen Eyes</h4><p>Göz çevresi bakımı; koyu halka ve şişlik karşıtı.</p><span class="prod-link">İNCELE →</span></div></a>
+      <a href="urun-detay.html" class="prod-card"><div class="prod-visual"><img src="assets/prod-hydrafacial.png" alt="Bubble Up"></div><div class="prod-info"><span class="brand">D2 Grup · Yüz</span><h4>Bubble Up</h4><p>Hidrodermabrazyon ve oksijen bakımı.</p><span class="prod-link">İNCELE →</span></div></a>
+      <a href="urun-detay.html" class="prod-card"><div class="prod-visual"><img src="assets/prod-morpheus.png" alt="CACI"></div><div class="prod-info"><span class="brand">D2 Grup · Yüz</span><h4>CACI</h4><p>Mikroakım ile non-invaziv yüz germe.</p><span class="prod-link">İNCELE →</span></div></a>
+      <a href="urun-detay.html" class="prod-card"><div class="prod-visual"><img src="assets/prod-fotona.png" alt="Ultrawave"></div><div class="prod-info"><span class="brand">D2 Grup · Yüz &amp; Vücut</span><h4>Ultrawave</h4><p>HIFU / odaklı ultrason ile lifting.</p><span class="prod-link">İNCELE →</span></div></a>
     </div>
   </div>
 </section>
