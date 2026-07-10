@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>İletişim — D2 GRUP</title>
+<meta name="description" content="D2 Grup ile iletişime geçin. Adres, telefon, e-posta ve iletişim formu.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="site-header"></div>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Anasayfa</a> / <span>İletişim</span></div>
+    <h1>İletişim</h1>
+    <p>Sorularınız, teklif talepleriniz ve iş ortaklığı için bize ulaşın.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container contact-grid">
+    <div>
+      <span class="eyebrow">BİZE ULAŞIN</span>
+      <h2 class="section-title" style="margin-bottom:32px">İletişim Bilgileri</h2>
+      <ul class="contact-info">
+        <li><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span><div><h4>Merkez Ofis</h4><p>Maslak Mah. Ahi Evran Cad. No:6/1, 34398 Sarıyer / İstanbul</p></div></li>
+        <li><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.6A2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.7a2 2 0 01-.4 2.1L8 9.6a16 16 0 006 6l1.1-1.1a2 2 0 012.1-.5c.9.3 1.8.5 2.7.6a2 2 0 011.7 2z"/></svg></span><div><h4>Telefon</h4><p>+90 (212) 123 45 67</p></div></li>
+        <li><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg></span><div><h4>E-posta</h4><p>info@d2grup.com</p></div></li>
+        <li><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><h4>Çalışma Saatleri</h4><p>Pazartesi - Cuma: 09:00 - 18:00</p></div></li>
+      </ul>
+      <div class="map-ph">
+        <span class="pin"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+        <span class="ph-label">Harita · Maslak, Sarıyer / İstanbul</span>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <h3 style="font-size:22px;margin-bottom:8px">Bize Yazın</h3>
+      <p style="color:var(--muted);font-size:14px;margin-bottom:26px">Formu doldurun, ekibimiz en kısa sürede size dönüş yapsın.</p>
+      <form onsubmit="return D2.submitForm(event,'contactMsg')">
+        <div class="field"><label>Ad Soyad</label><input type="text" placeholder="Adınız ve soyadınız" required></div>
+        <div class="field"><label>E-posta</label><input type="email" placeholder="ornek@firma.com" required></div>
+        <div class="field"><label>Telefon</label><input type="tel" placeholder="+90 (5xx) xxx xx xx"></div>
+        <div class="field"><label>Konu</label>
+          <select><option>Genel Bilgi</option><option>Teklif Talebi</option><option>Bayilik Başvurusu</option><option>Teknik Destek</option></select>
+        </div>
+        <div class="field"><label>Mesajınız</label><textarea placeholder="Mesajınızı buraya yazın..." required></textarea></div>
+        <button type="submit" class="btn btn-gold" style="width:100%;justify-content:center">GÖNDER <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <div class="form-msg" id="contactMsg">Teşekkürler! Mesajınız başarıyla iletildi. En kısa sürede size dönüş yapacağız.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<script src="js/main.js"></script>
+</body>
+</html>
