@@ -176,45 +176,46 @@ export default function ProductDetailPage() {
         </div>
       </section>
 
-      {/* Açıklama + kullanım alanları (zinc-50) */}
+      {/* Açıklama + özellikler + kullanım alanları (zinc-50) */}
       <section className="bg-zinc-50 py-20 px-6 md:px-12 border-b border-zinc-100">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12">
-          <div className="lg:col-span-2">
-            <span className="font-display font-bold text-xs tracking-[0.3em] text-zinc-500 block mb-4 uppercase">
-              ÜRÜN HAKKINDA
-            </span>
-            <h2 className="font-display font-black text-3xl tracking-tight text-zinc-950 uppercase leading-tight mb-6">
-              {product.name} NEDİR?
-            </h2>
-            <p className="font-sans font-light text-zinc-600 text-sm md:text-base leading-relaxed mb-6">
-              {product.longDescription || product.description}
-            </p>
+        <div className="max-w-7xl mx-auto">
+          <span className="font-display font-bold text-xs tracking-[0.3em] text-zinc-500 block mb-4 uppercase">
+            ÜRÜN HAKKINDA
+          </span>
+          <h2 className="font-display font-black text-3xl tracking-tight text-zinc-950 uppercase leading-tight mb-6">
+            {product.name} NEDİR?
+          </h2>
+          <p className="font-sans font-light text-zinc-600 text-sm md:text-base leading-relaxed mb-6 max-w-3xl">
+            {product.longDescription || product.description}
+          </p>
 
-            {/* Teknoloji etiketleri */}
-            {product.technologies.length > 0 && (
-              <div className="flex flex-wrap gap-2 mb-8">
-                {product.technologies.map((tid) => {
-                  const t = getTechnology(tid);
-                  if (!t) return null;
-                  return (
-                    <Link
-                      key={tid}
-                      to="/teknolojiler"
-                      className="text-[10px] font-bold tracking-widest uppercase text-zinc-700 bg-white border border-zinc-200 hover:bg-zinc-950 hover:text-white hover:border-zinc-950 px-3 py-2 transition-colors"
-                    >
-                      {t.shortTitle}
-                    </Link>
-                  );
-                })}
-              </div>
-            )}
+          {/* Teknoloji etiketleri */}
+          {product.technologies.length > 0 && (
+            <div className="flex flex-wrap gap-2 mb-10">
+              {product.technologies.map((tid) => {
+                const t = getTechnology(tid);
+                if (!t) return null;
+                return (
+                  <Link
+                    key={tid}
+                    to="/teknolojiler"
+                    className="text-[10px] font-bold tracking-widest uppercase text-zinc-700 bg-white border border-zinc-200 hover:bg-zinc-950 hover:text-white hover:border-zinc-950 px-3 py-2 transition-colors"
+                  >
+                    {t.shortTitle}
+                  </Link>
+                );
+              })}
+            </div>
+          )}
 
-            {/* Tüm özellikler */}
+          {/* Eşit yükseklikte iki kart: özellikler + kullanım alanları */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
+            {/* Öne çıkan özellikler */}
             <div className="bg-white border border-zinc-100 rounded-sm p-8">
-              <h3 className="font-display font-bold text-sm tracking-wider text-zinc-950 uppercase mb-5">
+              <h3 className="font-display font-bold text-sm tracking-wider text-zinc-950 uppercase mb-6">
                 ÖNE ÇIKAN ÖZELLİKLER
               </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="flex flex-col gap-4">
                 {product.features.map((f) => (
                   <div key={f} className="flex items-start gap-3">
                     <span className="w-6 h-6 rounded-full bg-zinc-950 text-white flex items-center justify-center shrink-0 mt-0.5">
@@ -225,20 +226,21 @@ export default function ProductDetailPage() {
                 ))}
               </div>
             </div>
-          </div>
 
-          {/* Kullanım alanları (koyu vurgu) */}
-          <div>
-            <div className="bg-zinc-950 text-white rounded-sm p-8 sticky top-28">
+            {/* Kullanım alanları (koyu vurgu) */}
+            <div className="bg-zinc-950 text-white rounded-sm p-8">
               <h3 className="font-display font-bold text-sm tracking-wider uppercase mb-6">KULLANIM ALANLARI</h3>
-              <ul className="flex flex-col gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {product.indications.map((ind) => (
-                  <li key={ind} className="flex items-center gap-3 pb-4 border-b border-white/10 last:border-0 last:pb-0">
-                    <ChevronRight size={15} className="text-white/40 shrink-0" />
-                    <span className="font-sans text-white/85 text-sm">{ind}</span>
-                  </li>
+                  <div
+                    key={ind}
+                    className="flex items-center gap-2.5 bg-white/5 border border-white/10 rounded-sm px-3.5 py-3"
+                  >
+                    <ChevronRight size={14} className="text-white/40 shrink-0" />
+                    <span className="font-sans text-white/85 text-sm leading-tight">{ind}</span>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -246,25 +248,23 @@ export default function ProductDetailPage() {
 
       {/* Teknik özellikler (beyaz) */}
       <section className="bg-white py-20 px-6 md:px-12 border-b border-zinc-100">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <div className="flex items-center gap-3 mb-8">
             <FileText size={18} className="text-zinc-500" />
-            <h2 className="font-display font-black text-2xl tracking-tight text-zinc-950 uppercase">
+            <h2 className="font-display font-black text-2xl md:text-3xl tracking-tight text-zinc-950 uppercase">
               CİHAZ SPESİFİKASYONLARI
             </h2>
           </div>
-          <div className="bg-white border border-zinc-200 rounded-sm overflow-hidden">
-            {product.specs.map((s, i) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 border-t border-zinc-200">
+            {product.specs.map((s) => (
               <div
                 key={s.label}
-                className={`flex flex-col sm:flex-row sm:items-center ${i % 2 === 0 ? 'bg-white' : 'bg-zinc-50/60'}`}
+                className="flex items-center justify-between gap-4 py-4 border-b border-zinc-100"
               >
-                <div className="sm:w-1/3 px-6 py-4 font-display font-bold text-[11px] tracking-widest text-zinc-500 uppercase border-b sm:border-b-0 sm:border-r border-zinc-100">
+                <span className="font-display font-bold text-[11px] tracking-widest text-zinc-500 uppercase shrink-0">
                   {s.label}
-                </div>
-                <div className="sm:w-2/3 px-6 py-4 font-sans text-sm text-zinc-800 border-b border-zinc-100">
-                  {s.value}
-                </div>
+                </span>
+                <span className="font-sans text-sm text-zinc-800 text-right">{s.value}</span>
               </div>
             ))}
           </div>
