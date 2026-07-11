@@ -4,23 +4,24 @@ import { Check } from 'lucide-react';
 import PageHeader from '../components/layout/PageHeader';
 import ProductCard from '../components/ui/ProductCard';
 import CtaBanner from '../components/sections/CtaBanner';
-import { CATEGORIES, getCategory } from '../data/categories';
-import { getProductsByCategory } from '../data/products';
+import { useCatalog } from '../data/DataContext';
+import type { CategoryId } from '../types';
 
 type SortKey = 'default' | 'name-asc' | 'name-desc';
 
 export default function CategoryPage() {
   const { cat } = useParams<{ cat: string }>();
+  const { categories: CATEGORIES, getCategory, getProductsByCategory } = useCatalog();
   const category = cat ? getCategory(cat) : undefined;
   const [sort, setSort] = useState<SortKey>('default');
 
   const products = useMemo(() => {
     if (!category) return [];
-    const list = getProductsByCategory(category.id);
+    const list = getProductsByCategory(category.slug as CategoryId);
     if (sort === 'name-asc') list.sort((a, b) => a.name.localeCompare(b.name, 'tr'));
     if (sort === 'name-desc') list.sort((a, b) => b.name.localeCompare(a.name, 'tr'));
     return list;
-  }, [category, sort]);
+  }, [category, sort, getProductsByCategory]);
 
   if (!category) return <Navigate to="/urunler" replace />;
 

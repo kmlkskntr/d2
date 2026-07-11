@@ -1,0 +1,236 @@
+// ============================================================
+// D2 GRUP — Veritabanı şeması (Prisma + SQLite)
+// JSON içeren alanlar (diziler/nesneler) String olarak tutulur;
+// API katmanı JSON.parse/stringify ile serileştirir.
+// ============================================================
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ---------------------------------------------------------- Kullanıcılar / Auth
+model User {
+  id           Int      @id @default(autoincrement())
+  email        String   @unique
+  passwordHash String
+  name         String?
+  role         String   @default("EDITOR") // ADMIN | EDITOR
+  active       Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  activities ActivityLog[]
+}
+
+// ---------------------------------------------------------- Kategoriler
+model Category {
+  id              Int      @id @default(autoincrement())
+  slug            String   @unique
+  title           String
+  subtitle        String
+  description     String
+  longDescription String
+  image           String
+  highlights      String   @default("[]") // JSON string[]
+  order           Int      @default(0)
+  active          Boolean  @default(true)
+  seoTitle        String?
+  seoDescription  String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  products Product[]
+}
+
+// ---------------------------------------------------------- Teknolojiler
+model Technology {
+  id             Int      @id @default(autoincrement())
+  key            String   @unique // 'lazer', 'rf', ...
+  title          String
+  shortTitle     String
+  iconName       String
+  image          String?
+  description    String
+  applications   String   @default("[]") // JSON string[]
+  order          Int      @default(0)
+  active         Boolean  @default(true)
+  seoTitle       String?
+  seoDescription String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  products Product[] @relation("ProductTechnologies")
+}
+
+// ---------------------------------------------------------- Markalar
+model Brand {
+  id          Int      @id @default(autoincrement())
+  key         String   @unique
+  name        String
+  logo        String
+  tagline     String
+  origin      String
+  description String
+  focus       String   @default("[]") // JSON string[]
+  website     String?
+  order       Int      @default(0)
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  products Product[]
+}
+
+// ---------------------------------------------------------- Ürün kataloğu (medikal cihazlar)
+model Product {
+  id              Int      @id @default(autoincrement())
+  slug            String   @unique
+  name            String
+  series          String?
+  tagline         String
+  description     String
+  longDescription String?
+  image           String
+  gallery         String   @default("[]") // JSON string[]
+  tags            String   @default("[]") // JSON string[]
+  features        String   @default("[]") // JSON string[]
+  indications     String   @default("[]") // JSON string[]
+  specs           String   @default("[]") // JSON {label,value}[]
+  variants        String   @default("[]") // JSON {name,note}[]
+  beforeAfter     String   @default("[]") // JSON string[]
+  priceLabel      String   @default("Bayiye Özel Fiyat")
+  priceNote       String   @default("Klinik ve bayi fiyatlandırması için teklif alın.")
+  pdfUrl          String?
+  featured        Boolean  @default(false)
+  isNew           Boolean  @default(false)
+  order           Int      @default(0)
+  active          Boolean  @default(true)
+  seoTitle        String?
+  seoDescription  String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  categoryId Int
+  category   Category @relation(fields: [categoryId], references: [id])
+  brandId    Int
+  brand      Brand    @relation(fields: [brandId], references: [id])
+
+  technologies Technology[] @relation("ProductTechnologies")
+}
+
+// ---------------------------------------------------------- Kozmetik ürünler (ayrı katalog)
+model CosmeticProduct {
+  id             Int      @id @default(autoincrement())
+  slug           String   @unique
+  name           String
+  category       String
+  description    String
+  images         String   @default("[]") // JSON string[]
+  specs          String   @default("[]") // JSON {label,value}[]
+  order          Int      @default(0)
+  active         Boolean  @default(true)
+  seoTitle       String?
+  seoDescription String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+// ---------------------------------------------------------- SSS
+model Faq {
+  id        Int      @id @default(autoincrement())
+  question  String
+  answer    String
+  group     String
+  order     Int      @default(0)
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ---------------------------------------------------------- Yasal metinler
+model LegalDoc {
+  id        Int      @id @default(autoincrement())
+  key       String   @unique // gizlilik | kullanim | kvkk | cerez
+  title     String
+  eyebrow   String   @default("YASAL")
+  updated   String
+  intro     String
+  sections  String   @default("[]") // JSON {heading,body[]}[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ---------------------------------------------------------- Genel ayarlar (site, anasayfa, kurumsal, iletişim, entegrasyonlar)
+model Setting {
+  id        Int      @id @default(autoincrement())
+  key       String   @unique // 'site' | 'home' | 'about' | 'contact' | 'integrations'
+  value     String   @default("{}") // JSON blob
+  updatedAt DateTime @updatedAt
+}
+
+// ---------------------------------------------------------- Sayfa bazlı SEO
+model SeoPage {
+  id          Int      @id @default(autoincrement())
+  path        String   @unique
+  title       String?
+  description String?
+  ogImage     String?
+  canonical   String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// ---------------------------------------------------------- Medya yönetimi
+model Media {
+  id        Int      @id @default(autoincrement())
+  filename  String
+  url       String
+  alt       String?
+  type      String   @default("image") // image | pdf
+  size      Int      @default(0)
+  createdAt DateTime @default(now())
+}
+
+// ---------------------------------------------------------- İletişim form mesajları
+model ContactMessage {
+  id        Int      @id @default(autoincrement())
+  name      String
+  phone     String
+  email     String
+  subject   String?
+  message   String
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+// ---------------------------------------------------------- Bayi başvuruları
+model DealerApplication {
+  id        Int      @id @default(autoincrement())
+  name      String
+  company   String?
+  phone     String
+  email     String
+  message   String?
+  status    String   @default("new") // new | contacted | approved | rejected
+  note      String?
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ---------------------------------------------------------- Etkinlik günlüğü (son düzenlenen içerikler)
+model ActivityLog {
+  id        Int      @id @default(autoincrement())
+  entity    String
+  entityId  Int?
+  action    String // create | update | delete
+  title     String?
+  userId    Int?
+  user      User?    @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+}

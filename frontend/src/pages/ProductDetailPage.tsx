@@ -6,11 +6,11 @@ import Breadcrumbs from '../components/layout/Breadcrumbs';
 import ProductCard from '../components/ui/ProductCard';
 import CtaBanner from '../components/sections/CtaBanner';
 import { LinkButton } from '../components/ui/Button';
-import { getProduct, getRelatedProducts } from '../data/products';
-import { getTechnology } from '../data/technologies';
+import { useCatalog } from '../data/DataContext';
 
 export default function ProductDetailPage() {
   const { slug } = useParams<{ slug: string }>();
+  const { getProduct, getRelatedProducts, getTechnology } = useCatalog();
   const product = slug ? getProduct(slug) : undefined;
   const [activeImg, setActiveImg] = useState(0);
   const [activeVariant, setActiveVariant] = useState(0);

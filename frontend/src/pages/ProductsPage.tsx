@@ -3,8 +3,7 @@ import { Search, SlidersHorizontal, X } from 'lucide-react';
 import PageHeader from '../components/layout/PageHeader';
 import ProductCard from '../components/ui/ProductCard';
 import CtaBanner from '../components/sections/CtaBanner';
-import { PRODUCTS, ALL_BRANDS } from '../data/products';
-import { CATEGORIES } from '../data/categories';
+import { useCatalog } from '../data/DataContext';
 import { CategoryId } from '../types';
 
 type SortKey = 'default' | 'name-asc' | 'name-desc' | 'brand';
@@ -17,6 +16,7 @@ const SORT_OPTIONS: { key: SortKey; label: string }[] = [
 ];
 
 export default function ProductsPage() {
+  const { products, categories: CATEGORIES, allBrands: ALL_BRANDS } = useCatalog();
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState<CategoryId | 'all'>('all');
   const [brand, setBrand] = useState<string>('all');
@@ -24,7 +24,7 @@ export default function ProductsPage() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
   const filtered = useMemo(() => {
-    let list = [...PRODUCTS];
+    let list = [...products];
 
     if (category !== 'all') list = list.filter((p) => p.category === category);
     if (brand !== 'all') list = list.filter((p) => p.brand === brand);
@@ -53,7 +53,7 @@ export default function ProductsPage() {
         list.sort((a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured)));
     }
     return list;
-  }, [query, category, brand, sort]);
+  }, [products, query, category, brand, sort]);
 
   const resetFilters = () => {
     setQuery('');

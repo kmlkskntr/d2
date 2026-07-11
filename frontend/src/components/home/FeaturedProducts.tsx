@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronLeft, ChevronRight, ArrowRight, ShieldCheck, Zap, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { getFeaturedProducts } from '../../data/products';
-
-const DEVICES = getFeaturedProducts();
+import { useCatalog } from '../../data/DataContext';
 
 export default function FeaturedProducts() {
+  const { getFeaturedProducts } = useCatalog();
+  const DEVICES = getFeaturedProducts();
   const [activeIndex, setActiveIndex] = useState(0);
   const next = () => setActiveIndex((p) => (p + 1) % DEVICES.length);
   const prev = () => setActiveIndex((p) => (p - 1 + DEVICES.length) % DEVICES.length);

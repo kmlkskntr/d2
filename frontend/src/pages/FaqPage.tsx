@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Plus, Minus, HelpCircle } from 'lucide-react';
 import PageHeader from '../components/layout/PageHeader';
 import CtaBanner from '../components/sections/CtaBanner';
-import { FAQ, FAQ_GROUPS } from '../data/faq';
+import { useCatalog } from '../data/DataContext';
 
 // Grup adından güvenli bir anchor id üretir
 const slugify = (value: string) =>
@@ -15,6 +15,7 @@ const slugify = (value: string) =>
     .replace(/(^-|-$)/g, '');
 
 export default function FaqPage() {
+  const { faq: FAQ, faqGroups: FAQ_GROUPS } = useCatalog();
   // Açık olan öğenin benzersiz anahtarı ("grup||index"); null ise tümü kapalı
   const [openKey, setOpenKey] = useState<string | null>('0||0');
 
