@@ -1,12 +1,17 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
-import {defineConfig} from 'vite';
+import {defineConfig, loadEnv} from 'vite';
 
-export default defineConfig(() => {
+export default defineConfig(({mode}) => {
+  const env = loadEnv(mode, process.cwd(), '');
+  // BrowserRouter (subdomain/kök dağıtım) MUTLAK base '/' gerektirir; aksi halde
+  // /urun/slug gibi çok segmentli rotalarda göreli 'assets/...' yolu /urun/assets/...'e
+  // çözülür ve JS + görseller kırılır (beyaz sayfa). HashRouter (GitHub Pages alt-yol)
+  // için göreli './' doğrudur (gerçek yol daima /d2/index.html'de kalır).
+  const base = env.VITE_ROUTER === 'browser' ? '/' : './';
   return {
-    // Göreli temel yol: site alt-yolda (ör. /d2/) veya kökte sorunsuz çalışır.
-    base: './',
+    base,
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
