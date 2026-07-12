@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, Globe, Plus, Minus } from 'lucide-react';
+import { Menu, X, ChevronDown, Globe, Plus, Minus, ShoppingBag, ArrowUpRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { NavMenuItem } from '../../types';
 import { useData } from '../../data/DataContext';
@@ -15,7 +15,10 @@ function isActive(item: NavMenuItem, pathname: string): boolean {
 
 export default function Header() {
   const { pathname } = useLocation();
-  const { nav: NAV } = useData();
+  const { nav: NAV, site } = useData();
+  const store = (site as any)?.store;
+  const showStore = Boolean(store?.enabled && store?.url);
+  const storeLabel = store?.label || 'ONLINE MAĞAZA';
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [openGroup, setOpenGroup] = useState<string | null>(null);
@@ -110,12 +113,25 @@ export default function Header() {
             <span className="text-[11px] font-bold tracking-wider">TR</span>
             <ChevronDown size={12} className="text-white/50" />
           </div>
-          <Link
-            to="/bayi-girisi"
-            className="text-[11px] font-bold tracking-widest text-white border border-white/30 hover:border-white px-5 py-2.5 transition-all duration-300 uppercase hover:bg-white hover:text-black"
-          >
-            BAYİ GİRİŞİ
-          </Link>
+          {showStore ? (
+            <a
+              href={store.url}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 text-[11px] font-bold tracking-widest bg-white text-black hover:bg-zinc-200 px-5 py-2.5 transition-all duration-300 uppercase group/store"
+            >
+              <ShoppingBag size={13} />
+              {storeLabel}
+              <ArrowUpRight size={13} className="opacity-60 group-hover/store:translate-x-0.5 group-hover/store:-translate-y-0.5 transition-transform" />
+            </a>
+          ) : (
+            <Link
+              to="/bayi-girisi"
+              className="text-[11px] font-bold tracking-widest text-white border border-white/30 hover:border-white px-5 py-2.5 transition-all duration-300 uppercase hover:bg-white hover:text-black"
+            >
+              BAYİ GİRİŞİ
+            </Link>
+          )}
         </div>
 
         {/* Mobil toggle */}
@@ -207,15 +223,32 @@ export default function Header() {
               })}
 
               <div className="flex flex-col gap-3 mt-4">
-                <Link
-                  to="/bayi-girisi"
-                  className="w-full text-center text-xs font-bold tracking-widest text-white border border-white/30 py-3.5 block hover:bg-white hover:text-black transition-all uppercase"
-                >
-                  BAYİ GİRİŞİ
-                </Link>
+                {showStore ? (
+                  <a
+                    href={store.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="w-full text-center inline-flex items-center justify-center gap-2 text-xs font-bold tracking-widest bg-white text-black py-3.5 hover:bg-zinc-200 transition-all uppercase"
+                  >
+                    <ShoppingBag size={15} />
+                    {storeLabel}
+                    <ArrowUpRight size={14} className="opacity-60" />
+                  </a>
+                ) : (
+                  <Link
+                    to="/bayi-girisi"
+                    className="w-full text-center text-xs font-bold tracking-widest text-white border border-white/30 py-3.5 block hover:bg-white hover:text-black transition-all uppercase"
+                  >
+                    BAYİ GİRİŞİ
+                  </Link>
+                )}
                 <Link
                   to="/iletisim"
-                  className="w-full text-center text-xs font-bold tracking-widest bg-white text-black py-3.5 block hover:bg-zinc-200 transition-all uppercase"
+                  className={`w-full text-center text-xs font-bold tracking-widest py-3.5 block transition-all uppercase ${
+                    showStore
+                      ? 'text-white border border-white/30 hover:bg-white hover:text-black'
+                      : 'bg-white text-black hover:bg-zinc-200'
+                  }`}
                 >
                   İLETİŞİME GEÇ
                 </Link>

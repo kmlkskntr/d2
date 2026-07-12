@@ -25,6 +25,13 @@ export const SITE = {
     youtube: 'https://youtube.com/',
     twitter: 'https://twitter.com/',
   },
+  // Online mağaza (e-ticaret) yönlendirmesi — header'daki birincil aksiyon.
+  // Panelden düzenlenebilir (Ayarlar › İletişim › Online Mağaza).
+  store: {
+    enabled: true,
+    label: 'ONLINE MAĞAZA',
+    url: 'https://www.frozenconcept.com',
+  },
 };
 
 // Ana navigasyon — açılır menülü çoklu sayfa yapısı

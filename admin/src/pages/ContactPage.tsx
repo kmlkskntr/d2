@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { Save, Phone, Share2, MapPin } from 'lucide-react';
+import { Save, Phone, Share2, MapPin, ShoppingBag } from 'lucide-react';
 import { api } from '../lib/api';
 import { useToast } from '../components/Feedback';
-import { Button, Input, Textarea, Field, Spinner, PageHeader, SectionCard } from '../components/ui';
+import { Button, Input, Textarea, Field, Spinner, PageHeader, SectionCard, Toggle } from '../components/ui';
 
 // ---------------------------------------------------------- Tipler
 interface Social {
@@ -10,6 +10,11 @@ interface Social {
   linkedin: string;
   youtube: string;
   twitter: string;
+}
+interface Store {
+  enabled: boolean;
+  label: string;
+  url: string;
 }
 interface SiteSettings {
   phone: string;
@@ -22,6 +27,7 @@ interface SiteSettings {
   addressTitle: string;
   workingHours: string;
   social: Social;
+  store: Store;
   mapEmbed: string;
 }
 
@@ -36,6 +42,7 @@ const DEFAULTS: SiteSettings = {
   addressTitle: '',
   workingHours: '',
   social: { instagram: '', linkedin: '', youtube: '', twitter: '' },
+  store: { enabled: true, label: 'ONLINE MAĞAZA', url: 'https://www.frozenconcept.com' },
   mapEmbed: '',
 };
 
@@ -52,6 +59,7 @@ export default function ContactPage() {
           ...DEFAULTS,
           ...data,
           social: { ...DEFAULTS.social, ...(data?.social ?? {}) },
+          store: { ...DEFAULTS.store, ...(data?.store ?? {}) },
         });
       } catch (e: any) {
         toast('error', e.message ?? 'Yüklenemedi.');
@@ -79,6 +87,8 @@ export default function ContactPage() {
   const set = (k: keyof SiteSettings, v: string) => setState((s) => (s ? { ...s, [k]: v } : s));
   const setSocial = (k: keyof Social, v: string) =>
     setState((s) => (s ? { ...s, social: { ...s.social, [k]: v } } : s));
+  const setStore = (k: keyof Store, v: string | boolean) =>
+    setState((s) => (s ? { ...s, store: { ...s.store, [k]: v } } : s));
 
   return (
     <div>
@@ -127,6 +137,28 @@ export default function ContactPage() {
               </Field>
             </div>
           </div>
+        </SectionCard>
+
+        {/* Online Mağaza */}
+        <SectionCard
+          icon={<ShoppingBag size={16} />}
+          title="Online Mağaza"
+          description="Header'daki 'ONLINE MAĞAZA' butonunu ve yönlendirmeyi yönetin"
+          actions={<Toggle checked={state.store.enabled} onChange={(v) => setStore('enabled', v)} label={state.store.enabled ? 'Aktif' : 'Gizli'} />}
+        >
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <Field label="Buton Metni" hint="Header'da görünen yazı">
+              <Input value={state.store.label} onChange={(e) => setStore('label', e.target.value)} placeholder="ONLINE MAĞAZA" />
+            </Field>
+            <Field label="Mağaza Adresi (URL)" hint="Tıklayınca yeni sekmede açılır">
+              <Input value={state.store.url} onChange={(e) => setStore('url', e.target.value)} placeholder="https://www.frozenconcept.com" />
+            </Field>
+          </div>
+          {!state.store.enabled && (
+            <p className="text-[12px] text-app-muted mt-3">
+              Buton gizliyken header'da yerine <span className="font-semibold text-app-ink">Bayi Girişi</span> gösterilir.
+            </p>
+          )}
         </SectionCard>
 
         {/* Sosyal Medya */}
