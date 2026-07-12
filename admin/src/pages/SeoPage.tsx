@@ -42,7 +42,7 @@ const nextCid = () => `row_${++cidCounter}`;
 function SectionTitle({ icon, title, hint }: { icon: ReactNode; title: string; hint?: string }) {
   return (
     <div className="flex items-start gap-2.5 mb-4">
-      <span className="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0">
+      <span className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
         {icon}
       </span>
       <div>

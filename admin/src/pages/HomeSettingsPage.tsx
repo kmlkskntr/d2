@@ -145,7 +145,7 @@ export default function HomeSettingsPage() {
       />
 
       <div className="flex items-start gap-2.5 rounded-lg border border-app-border bg-app-panel px-4 py-3 mb-6">
-        <Info size={16} className="text-indigo-600 shrink-0 mt-0.5" />
+        <Info size={16} className="text-emerald-600 shrink-0 mt-0.5" />
         <p className="text-[12px] text-app-muted leading-snug">
           Öne çıkan ürünler, kategoriler, teknolojiler ve markalar kendi modüllerinden yönetilir. (Ürünler
           modülündeki &apos;Öne çıkan&apos; bayrağı ile.)
@@ -205,7 +205,7 @@ export default function HomeSettingsPage() {
                 <select
                   value={stat.iconName}
                   onChange={(e) => setStat(i, 'iconName', e.target.value)}
-                  className="h-9 px-2 rounded-lg border border-app-border bg-white text-[13px] text-app-ink outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100 transition shrink-0"
+                  className="h-9 px-2 rounded-lg border border-app-border bg-white text-[13px] text-app-ink outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 transition shrink-0"
                 >
                   {STAT_ICONS.map((ic) => (
                     <option key={ic} value={ic}>
@@ -225,7 +225,7 @@ export default function HomeSettingsPage() {
             <button
               type="button"
               onClick={addStat}
-              className="self-start inline-flex items-center gap-1.5 text-[12px] font-semibold text-indigo-600 hover:text-indigo-700 mt-1"
+              className="self-start inline-flex items-center gap-1.5 text-[12px] font-semibold text-emerald-600 hover:text-emerald-700 mt-1"
             >
               <Plus size={14} /> İstatistik ekle
             </button>

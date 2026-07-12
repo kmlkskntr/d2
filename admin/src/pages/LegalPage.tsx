@@ -122,7 +122,7 @@ export default function LegalPage() {
                     type="button"
                     onClick={() => setActiveKey(d.key)}
                     className={`flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] font-semibold text-left whitespace-nowrap transition-colors ${
-                      isActive ? 'bg-indigo-600 text-white' : 'text-app-muted hover:bg-zinc-100 hover:text-app-ink'
+                      isActive ? 'bg-emerald-600 text-white' : 'text-app-muted hover:bg-zinc-100 hover:text-app-ink'
                     }`}
                   >
                     <FileText size={15} className="shrink-0" />
@@ -194,7 +194,7 @@ export default function LegalPage() {
                   <button
                     type="button"
                     onClick={addSection}
-                    className="self-start inline-flex items-center gap-1.5 text-[12px] font-semibold text-indigo-600 hover:text-indigo-700 mt-1"
+                    className="self-start inline-flex items-center gap-1.5 text-[12px] font-semibold text-emerald-600 hover:text-emerald-700 mt-1"
                   >
                     <Plus size={14} /> Bölüm ekle
                   </button>

@@ -4,10 +4,10 @@ import { Loader2 } from 'lucide-react';
 // ---------------------------------------------------------- Button
 type BtnVariant = 'primary' | 'secondary' | 'danger' | 'ghost';
 const BTN: Record<BtnVariant, string> = {
-  primary: 'bg-indigo-600 text-white hover:bg-indigo-700 border border-transparent',
-  secondary: 'bg-white text-app-ink hover:bg-zinc-50 border border-app-border',
-  danger: 'bg-red-600 text-white hover:bg-red-700 border border-transparent',
-  ghost: 'bg-transparent text-app-muted hover:bg-zinc-100 border border-transparent',
+  primary: 'bg-emerald-600 text-white hover:bg-emerald-700 border border-transparent shadow-sm shadow-emerald-900/15 focus:ring-emerald-200',
+  secondary: 'bg-white text-app-ink hover:bg-zinc-50 border border-app-border shadow-sm shadow-zinc-900/[0.03] focus:ring-zinc-200',
+  danger: 'bg-red-600 text-white hover:bg-red-700 border border-transparent shadow-sm shadow-red-900/15 focus:ring-red-200',
+  ghost: 'bg-transparent text-app-muted hover:bg-zinc-100 border border-transparent focus:ring-zinc-200',
 };
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -20,7 +20,7 @@ export function Button({ variant = 'primary', loading, icon, children, className
     <button
       {...rest}
       disabled={disabled || loading}
-      className={`inline-flex items-center justify-center gap-2 h-9 px-3.5 rounded-lg text-[13px] font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed ${BTN[variant]} ${className}`}
+      className={`inline-flex items-center justify-center gap-2 h-9 px-3.5 rounded-[10px] text-[13px] font-semibold transition-all outline-none focus:ring-2 active:scale-[.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100 ${BTN[variant]} ${className}`}
     >
       {loading ? <Loader2 size={15} className="animate-spin" /> : icon}
       {children}
@@ -33,7 +33,7 @@ export function Input({ className = '', ...rest }: InputHTMLAttributes<HTMLInput
   return (
     <input
       {...rest}
-      className={`w-full h-9 px-3 rounded-lg border border-app-border bg-white text-[13px] text-app-ink placeholder-zinc-400 outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100 transition ${className}`}
+      className={`w-full h-9 px-3 rounded-[10px] border border-app-border bg-white text-[13px] text-app-ink placeholder-zinc-400 outline-none focus:border-emerald-400 focus:ring-4 focus:ring-emerald-500/10 transition ${className}`}
     />
   );
 }
@@ -42,7 +42,7 @@ export function Textarea({ className = '', ...rest }: TextareaHTMLAttributes<HTM
   return (
     <textarea
       {...rest}
-      className={`w-full px-3 py-2 rounded-lg border border-app-border bg-white text-[13px] text-app-ink placeholder-zinc-400 outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100 transition resize-y ${className}`}
+      className={`w-full px-3 py-2.5 rounded-[10px] border border-app-border bg-white text-[13px] text-app-ink placeholder-zinc-400 outline-none focus:border-emerald-400 focus:ring-4 focus:ring-emerald-500/10 transition resize-y ${className}`}
     />
   );
 }
@@ -62,17 +62,9 @@ export function Field({ label, hint, required, children }: { label: string; hint
 // ---------------------------------------------------------- Toggle
 export function Toggle({ checked, onChange, label }: { checked: boolean; onChange: (v: boolean) => void; label?: string }) {
   return (
-    <button
-      type="button"
-      onClick={() => onChange(!checked)}
-      className="inline-flex items-center gap-2.5 select-none"
-    >
-      <span
-        className={`relative w-9 h-5 rounded-full transition-colors ${checked ? 'bg-indigo-600' : 'bg-zinc-300'}`}
-      >
-        <span
-          className={`absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-white shadow transition-transform ${checked ? 'translate-x-4' : ''}`}
-        />
+    <button type="button" onClick={() => onChange(!checked)} className="inline-flex items-center gap-2.5 select-none">
+      <span className={`relative w-9 h-5 rounded-full transition-colors ${checked ? 'bg-emerald-600' : 'bg-zinc-300'}`}>
+        <span className={`absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-white shadow transition-transform ${checked ? 'translate-x-4' : ''}`} />
       </span>
       {label && <span className="text-[13px] text-app-ink">{label}</span>}
     </button>
@@ -81,18 +73,22 @@ export function Toggle({ checked, onChange, label }: { checked: boolean; onChang
 
 // ---------------------------------------------------------- Card / Badge / Spinner
 export function Card({ children, className = '' }: { children: ReactNode; className?: string }) {
-  return <div className={`bg-app-panel border border-app-border rounded-xl ${className}`}>{children}</div>;
+  return (
+    <div className={`bg-app-panel border border-app-border rounded-2xl shadow-[0_1px_2px_rgba(16,24,40,0.04),0_1px_3px_rgba(16,24,40,0.05)] ${className}`}>
+      {children}
+    </div>
+  );
 }
 
 export function Badge({ children, tone = 'gray' }: { children: ReactNode; tone?: 'gray' | 'green' | 'red' | 'amber' | 'indigo' }) {
   const tones: Record<string, string> = {
     gray: 'bg-zinc-100 text-zinc-600',
-    green: 'bg-emerald-50 text-emerald-700',
-    red: 'bg-red-50 text-red-600',
-    amber: 'bg-amber-50 text-amber-700',
-    indigo: 'bg-indigo-50 text-indigo-700',
+    green: 'bg-emerald-50 text-emerald-700 ring-1 ring-emerald-600/10',
+    red: 'bg-red-50 text-red-600 ring-1 ring-red-600/10',
+    amber: 'bg-amber-50 text-amber-700 ring-1 ring-amber-600/10',
+    indigo: 'bg-emerald-50 text-emerald-700 ring-1 ring-emerald-600/10',
   };
-  return <span className={`inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-semibold ${tones[tone]}`}>{children}</span>;
+  return <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold ${tones[tone]}`}>{children}</span>;
 }
 
 export function Spinner() {
@@ -107,8 +103,8 @@ export function PageHeader({ title, subtitle, actions }: { title: string; subtit
   return (
     <div className="flex items-start justify-between gap-4 mb-6 flex-wrap">
       <div>
-        <h1 className="text-[19px] font-bold text-app-ink tracking-tight">{title}</h1>
-        {subtitle && <p className="text-[13px] text-app-muted mt-0.5">{subtitle}</p>}
+        <h1 className="text-[21px] font-bold text-app-ink tracking-tight">{title}</h1>
+        {subtitle && <p className="text-[13px] text-app-muted mt-1">{subtitle}</p>}
       </div>
       {actions && <div className="flex items-center gap-2">{actions}</div>}
     </div>

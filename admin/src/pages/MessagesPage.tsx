@@ -124,7 +124,7 @@ export default function MessagesPage() {
                             open(r);
                           }}
                           title="Görüntüle"
-                          className="p-1.5 rounded-lg text-app-muted hover:bg-zinc-100 hover:text-indigo-600"
+                          className="p-1.5 rounded-lg text-app-muted hover:bg-zinc-100 hover:text-emerald-600"
                         >
                           <Eye size={15} />
                         </button>
@@ -174,13 +174,13 @@ export default function MessagesPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div className="flex items-center gap-2 text-[13px] text-app-ink">
                 <Mail size={15} className="text-app-muted shrink-0" />
-                <a href={`mailto:${active.email}`} className="text-indigo-600 hover:underline break-all">
+                <a href={`mailto:${active.email}`} className="text-emerald-600 hover:underline break-all">
                   {active.email}
                 </a>
               </div>
               <div className="flex items-center gap-2 text-[13px] text-app-ink">
                 <Phone size={15} className="text-app-muted shrink-0" />
-                <a href={`tel:${active.phone}`} className="text-indigo-600 hover:underline">
+                <a href={`tel:${active.phone}`} className="text-emerald-600 hover:underline">
                   {active.phone}
                 </a>
               </div>

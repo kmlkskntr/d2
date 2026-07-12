@@ -149,7 +149,7 @@ export default function AboutSettingsPage() {
                 <select
                   value={stat.iconName}
                   onChange={(e) => setStat(i, 'iconName', e.target.value)}
-                  className="h-9 px-2 rounded-lg border border-app-border bg-white text-[13px] text-app-ink outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100 transition shrink-0"
+                  className="h-9 px-2 rounded-lg border border-app-border bg-white text-[13px] text-app-ink outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 transition shrink-0"
                 >
                   {STAT_ICONS.map((ic) => (
                     <option key={ic} value={ic}>
@@ -169,7 +169,7 @@ export default function AboutSettingsPage() {
             <button
               type="button"
               onClick={addStat}
-              className="self-start inline-flex items-center gap-1.5 text-[12px] font-semibold text-indigo-600 hover:text-indigo-700 mt-1"
+              className="self-start inline-flex items-center gap-1.5 text-[12px] font-semibold text-emerald-600 hover:text-emerald-700 mt-1"
             >
               <Plus size={14} /> İstatistik ekle
             </button>

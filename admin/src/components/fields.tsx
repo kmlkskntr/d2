@@ -95,7 +95,7 @@ export function GalleryField({ value, onChange }: { value: string[]; onChange: (
         <button
           type="button"
           onClick={() => inputRef.current?.click()}
-          className="w-20 h-20 rounded-lg border border-dashed border-app-border flex items-center justify-center text-app-muted hover:border-indigo-400 hover:text-indigo-500"
+          className="w-20 h-20 rounded-lg border border-dashed border-app-border flex items-center justify-center text-app-muted hover:border-emerald-400 hover:text-emerald-500"
         >
           {busy ? '...' : <Plus size={18} />}
         </button>
@@ -121,7 +121,7 @@ export function StringListField({ value, onChange, placeholder }: { value: strin
           </button>
         </div>
       ))}
-      <button type="button" onClick={() => onChange([...list, ''])} className="self-start inline-flex items-center gap-1.5 text-[12px] font-semibold text-indigo-600 hover:text-indigo-700 mt-1">
+      <button type="button" onClick={() => onChange([...list, ''])} className="self-start inline-flex items-center gap-1.5 text-[12px] font-semibold text-emerald-600 hover:text-emerald-700 mt-1">
         <Plus size={14} /> Ekle
       </button>
     </div>
@@ -143,7 +143,7 @@ export function SpecListField({ value, onChange }: { value: { label: string; val
           </button>
         </div>
       ))}
-      <button type="button" onClick={() => onChange([...list, { label: '', value: '' }])} className="self-start inline-flex items-center gap-1.5 text-[12px] font-semibold text-indigo-600 hover:text-indigo-700 mt-1">
+      <button type="button" onClick={() => onChange([...list, { label: '', value: '' }])} className="self-start inline-flex items-center gap-1.5 text-[12px] font-semibold text-emerald-600 hover:text-emerald-700 mt-1">
         <Plus size={14} /> Özellik ekle
       </button>
     </div>

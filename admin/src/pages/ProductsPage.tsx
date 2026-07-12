@@ -95,7 +95,7 @@ export default function ProductsPage() {
     finally { setPdfBusy(false); }
   };
 
-  const selectCls = 'w-full h-9 px-3 rounded-lg border border-app-border bg-white text-[13px] outline-none focus:border-indigo-400';
+  const selectCls = 'w-full h-9 px-3 rounded-lg border border-app-border bg-white text-[13px] outline-none focus:border-emerald-400';
 
   return (
     <>
@@ -138,7 +138,7 @@ export default function ProductsPage() {
                     <td className="px-4 py-3">{r.active ? <Badge tone="green">Aktif</Badge> : <Badge tone="gray">Pasif</Badge>}</td>
                     <td className="px-4 py-3">
                       <div className="flex items-center justify-end gap-1">
-                        <button onClick={() => setEditing({ ...r })} className="p-1.5 rounded-lg text-app-muted hover:bg-zinc-100 hover:text-indigo-600"><Pencil size={15} /></button>
+                        <button onClick={() => setEditing({ ...r })} className="p-1.5 rounded-lg text-app-muted hover:bg-zinc-100 hover:text-emerald-600"><Pencil size={15} /></button>
                         <button onClick={() => remove(r)} className="p-1.5 rounded-lg text-app-muted hover:bg-red-50 hover:text-red-600"><Trash2 size={15} /></button>
                       </div>
                     </td>
@@ -185,7 +185,7 @@ export default function ProductsPage() {
                     const on = editing.technologyIds.includes(t.id);
                     return (
                       <button key={t.id} type="button" onClick={() => toggleTech(t.id)}
-                        className={`px-3 h-8 rounded-lg text-[12px] font-semibold border transition-colors ${on ? 'bg-indigo-600 text-white border-indigo-600' : 'bg-white text-app-muted border-app-border hover:border-indigo-300'}`}>
+                        className={`px-3 h-8 rounded-lg text-[12px] font-semibold border transition-colors ${on ? 'bg-emerald-600 text-white border-emerald-600' : 'bg-white text-app-muted border-app-border hover:border-emerald-300'}`}>
                         {t.title}
                       </button>
                     );
@@ -210,7 +210,7 @@ export default function ProductsPage() {
                   <Input value={editing.pdfUrl ?? ''} onChange={(e) => set('pdfUrl', e.target.value)} placeholder="PDF URL" />
                   <input ref={pdfRef} type="file" accept="application/pdf" className="hidden" onChange={(e) => uploadPdf(e.target.files?.[0])} />
                   <Button type="button" variant="secondary" icon={<Upload size={14} />} loading={pdfBusy} onClick={() => pdfRef.current?.click()}>PDF Yükle</Button>
-                  {editing.pdfUrl && <a href={editing.pdfUrl} target="_blank" rel="noreferrer" className="text-indigo-600"><FileText size={16} /></a>}
+                  {editing.pdfUrl && <a href={editing.pdfUrl} target="_blank" rel="noreferrer" className="text-emerald-600"><FileText size={16} /></a>}
                 </div>
               </Field>
             </div>

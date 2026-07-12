@@ -95,9 +95,9 @@ export default function MenuPage() {
         actions={<Button icon={<Save size={15} />} loading={saving} onClick={save}>Kaydet</Button>}
       />
 
-      <div className="flex items-start gap-2.5 bg-indigo-50/60 border border-indigo-100 rounded-lg px-4 py-3 mb-5">
-        <Info size={16} className="text-indigo-500 shrink-0 mt-0.5" />
-        <p className="text-[12px] text-indigo-900/80 leading-relaxed">
+      <div className="flex items-start gap-2.5 bg-emerald-50/60 border border-emerald-100 rounded-lg px-4 py-3 mb-5">
+        <Info size={16} className="text-emerald-500 shrink-0 mt-0.5" />
+        <p className="text-[12px] text-emerald-900/80 leading-relaxed">
           Buradaki menü, web sitesinin üst navigasyonunu belirler. Sırayı ok tuşlarıyla değiştirebilir,
           alt menü (açılır) bağlantıları ekleyebilir, öğeleri pasife alabilirsiniz. <b>Bağlantı</b> alanı
           site içi yol olmalıdır (ör. <code>/urunler</code>, <code>/iletisim</code>).
@@ -147,7 +147,7 @@ export default function MenuPage() {
                   ))}
                 </div>
               )}
-              <button onClick={() => addChild(idx)} className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-indigo-600 hover:text-indigo-700">
+              <button onClick={() => addChild(idx)} className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-emerald-600 hover:text-emerald-700">
                 <Plus size={13} /> Alt menü (açılır) ekle
               </button>
             </div>

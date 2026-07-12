@@ -138,7 +138,7 @@ export default function ResourceManager({ title, subtitle, endpoint, fields, col
                     ))}
                     <td className="px-4 py-3">
                       <div className="flex items-center justify-end gap-1">
-                        <button onClick={() => setEditing({ ...row })} className="p-1.5 rounded-lg text-app-muted hover:bg-zinc-100 hover:text-indigo-600" title="Düzenle">
+                        <button onClick={() => setEditing({ ...row })} className="p-1.5 rounded-lg text-app-muted hover:bg-zinc-100 hover:text-emerald-600" title="Düzenle">
                           <Pencil size={15} />
                         </button>
                         <button onClick={() => remove(row)} className="p-1.5 rounded-lg text-app-muted hover:bg-red-50 hover:text-red-600" title="Sil">
@@ -183,7 +183,7 @@ export default function ResourceManager({ title, subtitle, endpoint, fields, col
                     <select
                       value={editing[f.name] ?? ''}
                       onChange={(e) => setField(f.name, e.target.value)}
-                      className="w-full h-9 px-3 rounded-lg border border-app-border bg-white text-[13px] outline-none focus:border-indigo-400"
+                      className="w-full h-9 px-3 rounded-lg border border-app-border bg-white text-[13px] outline-none focus:border-emerald-400"
                     >
                       {f.options?.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
                     </select>

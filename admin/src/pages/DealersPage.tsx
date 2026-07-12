@@ -32,7 +32,7 @@ const STATUS_KEYS: DealerStatus[] = ['new', 'contacted', 'approved', 'rejected']
 const fmtDate = (v: string) => new Date(v).toLocaleString('tr-TR');
 
 const selectCls =
-  'w-full h-9 px-3 rounded-lg border border-app-border bg-white text-[13px] text-app-ink outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100 transition';
+  'w-full h-9 px-3 rounded-lg border border-app-border bg-white text-[13px] text-app-ink outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 transition';
 
 export default function DealersPage() {
   const [rows, setRows] = useState<Dealer[]>([]);
@@ -165,7 +165,7 @@ export default function DealersPage() {
                     >
                       <td className="px-4 py-3">
                         <span className="inline-flex items-center gap-2">
-                          {!r.read && <span className="w-2 h-2 rounded-full bg-indigo-600 shrink-0" title="Okunmadı" />}
+                          {!r.read && <span className="w-2 h-2 rounded-full bg-emerald-600 shrink-0" title="Okunmadı" />}
                           <span className={`text-app-ink ${r.read ? '' : 'font-bold'}`}>{r.name}</span>
                         </span>
                       </td>
@@ -230,13 +230,13 @@ export default function DealersPage() {
               </div>
               <div className="flex items-center gap-2 text-[13px] text-app-ink">
                 <Mail size={15} className="text-app-muted shrink-0" />
-                <a href={`mailto:${active.email}`} className="text-indigo-600 hover:underline break-all">
+                <a href={`mailto:${active.email}`} className="text-emerald-600 hover:underline break-all">
                   {active.email}
                 </a>
               </div>
               <div className="flex items-center gap-2 text-[13px] text-app-ink">
                 <Phone size={15} className="text-app-muted shrink-0" />
-                <a href={`tel:${active.phone}`} className="text-indigo-600 hover:underline">
+                <a href={`tel:${active.phone}`} className="text-emerald-600 hover:underline">
                   {active.phone}
                 </a>
               </div>

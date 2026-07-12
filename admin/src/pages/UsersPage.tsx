@@ -198,7 +198,7 @@ export default function UsersPage() {
                         <button
                           onClick={() => openEdit(r)}
                           title="Düzenle"
-                          className="p-1.5 rounded-lg text-app-muted hover:bg-zinc-100 hover:text-indigo-600"
+                          className="p-1.5 rounded-lg text-app-muted hover:bg-zinc-100 hover:text-emerald-600"
                         >
                           <Pencil size={15} />
                         </button>
@@ -249,7 +249,7 @@ export default function UsersPage() {
             <select
               value={cRole}
               onChange={(e) => setCRole(e.target.value as Role)}
-              className="w-full h-9 px-3 rounded-lg border border-app-border bg-white text-[13px] text-app-ink outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100 transition"
+              className="w-full h-9 px-3 rounded-lg border border-app-border bg-white text-[13px] text-app-ink outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 transition"
             >
               <option value="EDITOR">Editör</option>
               <option value="ADMIN">Yönetici</option>
@@ -286,7 +286,7 @@ export default function UsersPage() {
               <select
                 value={eRole}
                 onChange={(e) => setERole(e.target.value as Role)}
-                className="w-full h-9 px-3 rounded-lg border border-app-border bg-white text-[13px] text-app-ink outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100 transition"
+                className="w-full h-9 px-3 rounded-lg border border-app-border bg-white text-[13px] text-app-ink outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 transition"
               >
                 <option value="EDITOR">Editör</option>
                 <option value="ADMIN">Yönetici</option>

@@ -56,46 +56,55 @@ export default function DashboardPage() {
 
   return (
     <>
-      {/* Karşılama */}
-      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-7">
-        <div>
-          <h1 className="text-[22px] font-bold text-app-ink tracking-tight">
-            Hoş geldiniz, {user?.name ?? 'Yönetici'} 👋
-          </h1>
-          <p className="text-[13px] text-app-muted mt-1 capitalize">{today}</p>
-        </div>
-        <div className="flex items-center gap-2">
-          <a
-            href={SITE_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 h-9 px-3.5 rounded-lg text-[13px] font-semibold bg-white border border-app-border text-app-ink hover:bg-zinc-50 transition-colors"
-          >
-            Siteyi Görüntüle <ExternalLink size={14} />
-          </a>
-          <Link
-            to="/urunler"
-            className="inline-flex items-center gap-2 h-9 px-3.5 rounded-lg text-[13px] font-semibold bg-indigo-600 text-white hover:bg-indigo-700 transition-colors"
-          >
-            <Plus size={15} /> Yeni Ürün
-          </Link>
+      {/* Karşılama banner (premium gradient) */}
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-emerald-800 via-emerald-700 to-teal-600 text-white p-6 md:p-7 mb-5">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(255,255,255,0.14),transparent_45%)]" />
+        <div className="absolute -bottom-16 -right-10 w-64 h-64 rounded-full bg-white/10 blur-3xl pointer-events-none" />
+        <div className="relative flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div>
+            <h1 className="text-[22px] md:text-[24px] font-bold tracking-tight">Hoş geldiniz, {user?.name ?? 'Yönetici'} 👋</h1>
+            <p className="text-white/75 text-[13px] mt-1.5 capitalize">{today}</p>
+          </div>
+          <div className="flex items-center gap-2">
+            <a
+              href={SITE_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 h-9 px-3.5 rounded-[10px] text-[13px] font-semibold bg-white/15 border border-white/20 text-white hover:bg-white/25 backdrop-blur transition-colors"
+            >
+              Siteyi Görüntüle <ExternalLink size={14} />
+            </a>
+            <Link
+              to="/urunler"
+              className="inline-flex items-center gap-2 h-9 px-3.5 rounded-[10px] text-[13px] font-semibold bg-white text-emerald-700 hover:bg-emerald-50 transition-colors shadow-sm"
+            >
+              <Plus size={15} /> Yeni Ürün
+            </Link>
+          </div>
         </div>
       </div>
 
       {/* İstatistik kartları (6) */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mb-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mb-5">
         {stats.map((s) => {
           const Icon = s.icon;
           return (
-            <Link key={s.label} to={s.to}>
-              <Card className="p-4 h-full hover:border-indigo-200 hover:shadow-sm transition-all">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="w-8 h-8 rounded-lg bg-indigo-50 flex items-center justify-center text-indigo-600"><Icon size={15} /></span>
-                  <ArrowRight size={13} className="text-zinc-300" />
+            <Link key={s.label} to={s.to} className="group">
+              <Card className="p-4 h-full transition-all group-hover:-translate-y-0.5 group-hover:shadow-[0_8px_24px_rgba(16,24,40,0.08)]">
+                <div className="flex items-center justify-between mb-3.5">
+                  <span className="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-50 to-teal-50 ring-1 ring-emerald-600/10 flex items-center justify-center text-emerald-600">
+                    <Icon size={16} />
+                  </span>
+                  <ArrowRight size={14} className="text-zinc-300 group-hover:text-emerald-500 group-hover:translate-x-0.5 transition-all" />
                 </div>
-                <div className="text-[22px] font-bold text-app-ink leading-none">{s.value}</div>
-                <div className="text-[12px] text-app-muted mt-1">{s.label}</div>
-                {s.sub && <div className="text-[10px] text-amber-600 mt-1.5 flex items-center gap-1"><Star size={9} className="fill-amber-500 text-amber-500" />{s.sub}</div>}
+                <div className="text-[26px] font-bold text-app-ink leading-none tracking-tight">{s.value}</div>
+                <div className="text-[12px] text-app-muted mt-1.5">{s.label}</div>
+                {s.sub && (
+                  <div className="text-[10px] text-amber-600 mt-2 flex items-center gap-1">
+                    <Star size={9} className="fill-amber-500 text-amber-500" />
+                    {s.sub}
+                  </div>
+                )}
               </Card>
             </Link>
           );
@@ -117,7 +126,7 @@ export default function DashboardPage() {
                   <span className="text-[12px] font-semibold text-app-ink">{c.count}</span>
                 </div>
                 <div className="h-2 rounded-full bg-zinc-100 overflow-hidden">
-                  <div className="h-full rounded-full bg-indigo-500" style={{ width: `${(c.count / maxCat) * 100}%` }} />
+                  <div className="h-full rounded-full bg-emerald-500" style={{ width: `${(c.count / maxCat) * 100}%` }} />
                 </div>
               </div>
             ))}
@@ -127,7 +136,7 @@ export default function DashboardPage() {
         {/* Talepler + hızlı işlemler */}
         <div className="flex flex-col gap-4">
           <Link to="/mesajlar">
-            <Card className="p-4 hover:border-indigo-200 transition-colors">
+            <Card className="p-4 hover:border-emerald-200 transition-colors">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2 text-app-muted"><Mail size={15} /><span className="text-[12px] font-semibold">İletişim Mesajları</span></div>
                 {data.contact.unread > 0 && <Badge tone="red">{data.contact.unread} yeni</Badge>}
@@ -136,7 +145,7 @@ export default function DashboardPage() {
             </Card>
           </Link>
           <Link to="/bayi-basvurulari">
-            <Card className="p-4 hover:border-indigo-200 transition-colors">
+            <Card className="p-4 hover:border-emerald-200 transition-colors">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2 text-app-muted"><Handshake size={15} /><span className="text-[12px] font-semibold">Bayi Başvuruları</span></div>
                 {data.dealers.unread > 0 && <Badge tone="red">{data.dealers.unread} yeni</Badge>}
@@ -180,9 +189,9 @@ export default function DashboardPage() {
               const Icon = q.icon;
               return (
                 <Link key={q.label} to={q.to} className="flex items-center gap-2.5 px-2.5 h-10 rounded-lg text-[13px] font-medium text-app-ink hover:bg-zinc-50 transition-colors group">
-                  <span className="w-7 h-7 rounded-md bg-indigo-50 text-indigo-600 flex items-center justify-center"><Icon size={14} /></span>
+                  <span className="w-7 h-7 rounded-md bg-emerald-50 text-emerald-600 flex items-center justify-center"><Icon size={14} /></span>
                   {q.label}
-                  <ArrowRight size={14} className="ml-auto text-zinc-300 group-hover:text-indigo-500 transition-colors" />
+                  <ArrowRight size={14} className="ml-auto text-zinc-300 group-hover:text-emerald-500 transition-colors" />
                 </Link>
               );
             })}
