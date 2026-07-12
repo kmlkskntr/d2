@@ -53,19 +53,19 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const SidebarContent = (
     <div className="flex flex-col h-full">
       {/* Ajans logosu */}
-      <div className="h-16 flex items-center px-5 border-b border-app-border shrink-0">
-        <a
-          href={AGENCY.url}
-          target="_blank"
-          rel="noreferrer"
-          title={AGENCY.name}
-          className="flex flex-col gap-1 group"
-        >
-          <img src={AGENCY.logo} alt={AGENCY.name} className="h-6 w-auto object-contain" />
-          <span className="text-[9px] font-semibold tracking-[0.18em] text-app-muted uppercase pl-0.5">
-            Yönetim Paneli
-          </span>
+      <div className="px-5 pt-5 pb-4 border-b border-app-border shrink-0">
+        <a href={AGENCY.url} target="_blank" rel="noreferrer" title={AGENCY.name} className="block group">
+          <img
+            src={AGENCY.logo}
+            alt={AGENCY.name}
+            className="h-7 w-auto object-contain group-hover:opacity-80 transition-opacity"
+          />
         </a>
+        <div className="flex items-center gap-2.5 mt-3.5">
+          <span className="h-px flex-grow bg-gradient-to-r from-transparent to-app-border" />
+          <span className="text-[9px] font-bold tracking-[0.28em] text-app-muted uppercase">Yönetim Paneli</span>
+          <span className="h-px flex-grow bg-gradient-to-l from-transparent to-app-border" />
+        </div>
       </div>
 
       {/* Nav */}
@@ -153,7 +153,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <img
               src={AGENCY.logo}
               alt={AGENCY.name}
-              className="h-4 w-auto object-contain opacity-60 group-hover:opacity-100 transition-opacity"
+              className="h-5 w-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity"
             />
           </a>
         </footer>

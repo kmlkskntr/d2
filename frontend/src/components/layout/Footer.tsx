@@ -90,22 +90,26 @@ export default function Footer() {
       </div>
 
       {/* Premium ajans imzası — KCreative Office */}
-      <div className="border-t border-white/10 relative z-10">
+      <div className="border-t border-white/10 relative z-10 bg-black/30">
         <a
           href="https://kcreative.com.tr"
           target="_blank"
           rel="noreferrer"
-          className="max-w-7xl mx-auto px-6 md:px-12 py-5 flex items-center justify-center gap-3 group"
+          className="max-w-7xl mx-auto px-6 md:px-12 py-9 flex flex-col items-center gap-4 group"
           aria-label="KCreative Office"
         >
-          <span className="font-mono text-[9px] tracking-[0.25em] text-white/40 uppercase group-hover:text-white/60 transition-colors">
+          <span className="font-mono text-[10px] tracking-[0.4em] text-white/45 uppercase group-hover:text-white/70 transition-colors">
             Tasarım &amp; Geliştirme
           </span>
-          <img
-            src="https://kcreative.com.tr/wp-content/uploads/2025/09/kk1.png"
-            alt="KCreative Office"
-            className="h-4 w-auto object-contain brightness-0 invert opacity-55 group-hover:opacity-90 transition-opacity"
-          />
+          <div className="relative">
+            {/* Yumuşak ışık halesi */}
+            <div className="absolute -inset-8 bg-white/12 blur-3xl rounded-full opacity-50 group-hover:opacity-90 transition-opacity duration-500 pointer-events-none" />
+            <img
+              src="https://kcreative.com.tr/wp-content/uploads/2025/09/kk1.png"
+              alt="KCreative Office"
+              className="relative h-10 md:h-11 w-auto object-contain brightness-0 invert opacity-90 group-hover:opacity-100 transition-all duration-300 drop-shadow-[0_0_16px_rgba(255,255,255,0.4)]"
+            />
+          </div>
         </a>
       </div>
     </footer>
