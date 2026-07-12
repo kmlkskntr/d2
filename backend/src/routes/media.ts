@@ -31,7 +31,11 @@ const upload = multer({
   limits: { fileSize: 20 * 1024 * 1024 }, // 20 MB
   fileFilter: (_req, file, cb) => {
     const ok = /image\/(jpe?g|png|webp|gif|svg\+xml)|application\/pdf/.test(file.mimetype);
-    cb(ok ? null : new Error('Yalnızca görsel veya PDF yükleyebilirsiniz.'), ok);
+    if (!ok) {
+      cb(new Error('Yalnızca görsel veya PDF yükleyebilirsiniz.'));
+      return;
+    }
+    cb(null, true);
   },
 });
 
