@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { LogIn } from 'lucide-react';
 import { useAuth } from '../lib/auth';
 import { Button, Input, Field } from '../components/ui';
+import { AGENCY } from '../lib/brand';
 
 export default function LoginPage() {
   const { login, user } = useAuth();
@@ -34,8 +35,8 @@ export default function LoginPage() {
     <div className="min-h-screen flex items-center justify-center p-4 bg-app-bg">
       <div className="w-full max-w-sm">
         <div className="flex flex-col items-center mb-8">
-          <span className="flex items-center justify-center w-11 h-11 rounded-xl bg-app-ink text-white text-[17px] font-extrabold tracking-tight mb-3">D2</span>
-          <h1 className="text-[17px] font-bold text-app-ink">D2 Grup Yönetim Paneli</h1>
+          <img src={AGENCY.logo} alt={AGENCY.name} className="h-9 w-auto object-contain mb-5" />
+          <h1 className="text-[16px] font-bold text-app-ink">D2 Grup Yönetim Paneli</h1>
           <p className="text-[13px] text-app-muted mt-1">Devam etmek için giriş yapın</p>
         </div>
 
@@ -51,7 +52,19 @@ export default function LoginPage() {
             Giriş Yap
           </Button>
         </form>
-        <p className="text-center text-[11px] text-app-muted mt-4">© 2026 D2 Grup — Yönetim Paneli</p>
+        <a
+          href={AGENCY.url}
+          target="_blank"
+          rel="noreferrer"
+          className="flex items-center justify-center gap-2 group mt-6"
+        >
+          <span className="text-[11px] text-app-muted">Tasarım &amp; Geliştirme</span>
+          <img
+            src={AGENCY.logo}
+            alt={AGENCY.name}
+            className="h-3.5 w-auto object-contain opacity-60 group-hover:opacity-100 transition-opacity"
+          />
+        </a>
       </div>
     </div>
   );

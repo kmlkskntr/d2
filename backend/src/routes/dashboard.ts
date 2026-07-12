@@ -7,6 +7,8 @@ const router = Router();
 router.get('/', requireAuth, async (_req: Request, res: Response) => {
   const [
     products,
+    activeProducts,
+    featured,
     categories,
     technologies,
     brands,
@@ -16,9 +18,12 @@ router.get('/', requireAuth, async (_req: Request, res: Response) => {
     contactUnread,
     dealerTotal,
     dealerUnread,
+    categoryRows,
     recent,
   ] = await Promise.all([
     prisma.product.count(),
+    prisma.product.count({ where: { active: true } }),
+    prisma.product.count({ where: { featured: true } }),
     prisma.category.count(),
     prisma.technology.count(),
     prisma.brand.count(),
@@ -28,11 +33,16 @@ router.get('/', requireAuth, async (_req: Request, res: Response) => {
     prisma.contactMessage.count({ where: { read: false } }),
     prisma.dealerApplication.count(),
     prisma.dealerApplication.count({ where: { read: false } }),
+    prisma.category.findMany({
+      select: { title: true, subtitle: true, _count: { select: { products: true } } },
+      orderBy: { order: 'asc' },
+    }),
     prisma.activityLog.findMany({ orderBy: { createdAt: 'desc' }, take: 8, include: { user: true } }),
   ]);
 
   res.json({
-    counts: { products, categories, technologies, brands, cosmetics, faq },
+    counts: { products, activeProducts, featured, categories, technologies, brands, cosmetics, faq },
+    byCategory: categoryRows.map((c) => ({ title: c.title, subtitle: c.subtitle, count: c._count.products })),
     contact: { total: contactTotal, unread: contactUnread },
     dealers: { total: dealerTotal, unread: dealerUnread },
     recent: recent.map((r) => ({

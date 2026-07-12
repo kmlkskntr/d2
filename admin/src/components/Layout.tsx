@@ -5,6 +5,7 @@ import {
   Scale, Mail, Handshake, Image, Search, Users, Settings, LogOut, Menu, Phone,
 } from 'lucide-react';
 import { useAuth } from '../lib/auth';
+import { AGENCY } from '../lib/brand';
 
 interface NavItem { to: string; label: string; icon: typeof Home; adminOnly?: boolean }
 interface NavGroup { title: string; items: NavItem[] }
@@ -51,13 +52,20 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   const SidebarContent = (
     <div className="flex flex-col h-full">
-      {/* Logo */}
-      <div className="h-14 flex items-center gap-2.5 px-5 border-b border-app-border shrink-0">
-        <span className="flex items-center justify-center w-7 h-7 rounded-md bg-app-ink text-white text-[13px] font-extrabold tracking-tight">D2</span>
-        <div className="leading-none">
-          <span className="text-[13px] font-bold text-app-ink">D2 Grup</span>
-          <span className="block text-[10px] text-app-muted mt-0.5">Yönetim Paneli</span>
-        </div>
+      {/* Ajans logosu */}
+      <div className="h-16 flex items-center px-5 border-b border-app-border shrink-0">
+        <a
+          href={AGENCY.url}
+          target="_blank"
+          rel="noreferrer"
+          title={AGENCY.name}
+          className="flex flex-col gap-1 group"
+        >
+          <img src={AGENCY.logo} alt={AGENCY.name} className="h-6 w-auto object-contain" />
+          <span className="text-[9px] font-semibold tracking-[0.18em] text-app-muted uppercase pl-0.5">
+            Yönetim Paneli
+          </span>
+        </a>
       </div>
 
       {/* Nav */}
@@ -133,6 +141,22 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <span className="w-8" />
         </header>
         <main className="flex-grow p-5 md:p-8 max-w-6xl w-full mx-auto">{children}</main>
+        {/* Premium ajans imzası */}
+        <footer className="border-t border-app-border py-4 px-6">
+          <a
+            href={AGENCY.url}
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center justify-center gap-2.5 group w-fit mx-auto"
+          >
+            <span className="text-[11px] text-app-muted">Tasarım &amp; Geliştirme</span>
+            <img
+              src={AGENCY.logo}
+              alt={AGENCY.name}
+              className="h-4 w-auto object-contain opacity-60 group-hover:opacity-100 transition-opacity"
+            />
+          </a>
+        </footer>
       </div>
     </div>
   );

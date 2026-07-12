@@ -88,6 +88,26 @@ export default function Footer() {
           </div>
         </div>
       </div>
+
+      {/* Premium ajans imzası — KCreative Office */}
+      <div className="border-t border-white/10 relative z-10">
+        <a
+          href="https://kcreative.com.tr"
+          target="_blank"
+          rel="noreferrer"
+          className="max-w-7xl mx-auto px-6 md:px-12 py-5 flex items-center justify-center gap-3 group"
+          aria-label="KCreative Office"
+        >
+          <span className="font-mono text-[9px] tracking-[0.25em] text-white/40 uppercase group-hover:text-white/60 transition-colors">
+            Tasarım &amp; Geliştirme
+          </span>
+          <img
+            src="https://kcreative.com.tr/wp-content/uploads/2025/09/kk1.png"
+            alt="KCreative Office"
+            className="h-4 w-auto object-contain brightness-0 invert opacity-55 group-hover:opacity-90 transition-opacity"
+          />
+        </a>
+      </div>
     </footer>
   );
 }
