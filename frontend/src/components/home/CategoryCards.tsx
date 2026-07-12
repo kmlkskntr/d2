@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, ChevronRight } from 'lucide-react';
 import { motion } from 'motion/react';
 import { CATEGORIES } from '../../data/categories';
+import { asset } from '../../lib/asset';
 
 export default function CategoryCards() {
   // Ana sayfada ilk 3 kategori (Yüz, Vücut, Longevity)
@@ -50,7 +51,7 @@ export default function CategoryCards() {
               >
                 <div className="absolute inset-0 bg-black/40 z-10 group-hover:bg-black/30 transition-all duration-500" />
                 <img
-                  src={category.image}
+                  src={asset(category.image)}
                   alt={`${category.title} ${category.subtitle}`}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />

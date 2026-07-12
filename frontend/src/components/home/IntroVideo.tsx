@@ -1,4 +1,5 @@
 import { Play, Trophy, CheckCircle2 } from 'lucide-react';
+import { asset } from '../../lib/asset';
 
 interface IntroVideoProps {
   onPlay: () => void;
@@ -49,7 +50,7 @@ export default function IntroVideo({ onPlay }: IntroVideoProps) {
             aria-label="Tanıtım videosunu oynat"
           >
             <div className="absolute inset-0 bg-black/40 group-hover:bg-black/35 transition-colors duration-300 z-10" />
-            <img src={VIDEO_THUMB} alt="D2 Grup video tanıtımı" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            <img src={asset(VIDEO_THUMB)} alt="D2 Grup video tanıtımı" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
             <div className="absolute inset-0 flex items-center justify-center z-20">
               <div className="w-16 h-16 rounded-full bg-white text-black flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 relative">
                 <div className="absolute inset-0 rounded-full bg-white/35 animate-ping" />

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, BadgeCheck } from 'lucide-react';
 import { BRANDS } from '../../data/brands';
+import { asset } from '../../lib/asset';
 
 const COSMETICS_IMAGE = 'assets/renders/cosmetics-set.jpg';
 
@@ -15,7 +16,7 @@ export default function CosmeticsBrands() {
           <div className="flex-1 bg-zinc-950 text-white p-10 md:p-14 flex flex-col justify-between rounded-sm relative overflow-hidden group min-h-[580px]">
             <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-transparent z-10 pointer-events-none" />
             <img
-              src={COSMETICS_IMAGE}
+              src={asset(COSMETICS_IMAGE)}
               alt="D2 Grup premium kozmetik ürünler"
               className="absolute inset-0 w-full h-full object-cover opacity-45 group-hover:scale-102 transition-transform duration-1000"
             />

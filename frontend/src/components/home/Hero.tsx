@@ -3,6 +3,7 @@ import { Play, ArrowRight } from 'lucide-react';
 import { motion } from 'motion/react';
 import { STATS } from '../../data/site';
 import Icon from '../ui/Icon';
+import { asset } from '../../lib/asset';
 
 const HERO_IMAGE = 'assets/renders/hero-device.jpg';
 
@@ -91,7 +92,7 @@ export default function Hero({ onPlayVideo }: HeroProps) {
           >
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10 pointer-events-none" />
             <img
-              src={HERO_IMAGE}
+              src={asset(HERO_IMAGE)}
               alt="D2 Grup premium estetik cihazı"
               className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
             />

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ChevronLeft, ChevronRight, ArrowRight, ShieldCheck, Zap, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useCatalog } from '../../data/DataContext';
+import { asset } from '../../lib/asset';
 
 export default function FeaturedProducts() {
   const { getFeaturedProducts } = useCatalog();
@@ -136,7 +137,7 @@ export default function FeaturedProducts() {
                         }`}
                       >
                         <img
-                          src={device.image}
+                          src={asset(device.image)}
                           alt={device.name}
                           className="max-h-full max-w-full object-contain mix-blend-multiply"
                         />

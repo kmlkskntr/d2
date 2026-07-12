@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Product } from '../../types';
+import { asset } from '../../lib/asset';
 
 interface ProductCardProps {
   product: Product;
@@ -23,7 +24,7 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
         {/* Görsel */}
         <div className="relative aspect-[4/3] bg-zinc-50 overflow-hidden flex items-center justify-center p-8">
           <img
-            src={product.image}
+            src={asset(product.image)}
             alt={product.name}
             loading="lazy"
             className="max-h-full max-w-full object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-105"

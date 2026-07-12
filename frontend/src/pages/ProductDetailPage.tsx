@@ -7,6 +7,7 @@ import ProductCard from '../components/ui/ProductCard';
 import CtaBanner from '../components/sections/CtaBanner';
 import { LinkButton } from '../components/ui/Button';
 import { useCatalog } from '../data/DataContext';
+import { asset } from '../lib/asset';
 
 export default function ProductDetailPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -55,7 +56,7 @@ export default function ProductDetailPage() {
               className="aspect-square bg-zinc-50 border border-zinc-100 rounded-sm overflow-hidden flex items-center justify-center p-10 mb-4"
             >
               <img
-                src={gallery[activeImg]}
+                src={asset(gallery[activeImg])}
                 alt={product.name}
                 className="max-h-full max-w-full object-contain mix-blend-multiply"
               />
@@ -69,7 +70,7 @@ export default function ProductDetailPage() {
                     activeImg === i ? 'border-zinc-950' : 'border-zinc-100 opacity-70 hover:opacity-100'
                   }`}
                 >
-                  <img src={img} alt={`${product.name} önizleme ${i + 1}`} className="max-h-full max-w-full object-contain mix-blend-multiply" />
+                  <img src={asset(img)} alt={`${product.name} önizleme ${i + 1}`} className="max-h-full max-w-full object-contain mix-blend-multiply" />
                 </button>
               ))}
             </div>
@@ -293,7 +294,7 @@ export default function ProductDetailPage() {
                   transition={{ duration: 0.4, delay: (i % 3) * 0.08 }}
                   className="relative rounded-sm overflow-hidden aspect-[4/3] group border border-zinc-100"
                 >
-                  <img src={img} alt={`${product.name} öncesi ve sonrası ${i + 1}`} className="w-full h-full object-cover" />
+                  <img src={asset(img)} alt={`${product.name} öncesi ve sonrası ${i + 1}`} className="w-full h-full object-cover" />
                   <span className="absolute top-3 left-3 bg-black/70 text-white text-[9px] font-bold tracking-widest uppercase px-2.5 py-1">
                     Öncesi
                   </span>

@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import type { ReactNode } from 'react';
 import Breadcrumbs, { Crumb } from './Breadcrumbs';
+import { asset } from '../../lib/asset';
 
 interface PageHeaderProps {
   eyebrow?: string;
@@ -29,7 +30,7 @@ export default function PageHeader({
         <>
           <div className="absolute inset-0 z-0">
             <img
-              src={backgroundImage}
+              src={asset(backgroundImage)}
               alt=""
               aria-hidden
               className="w-full h-full object-cover opacity-25"

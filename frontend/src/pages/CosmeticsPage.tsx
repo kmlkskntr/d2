@@ -15,6 +15,7 @@ import SectionHeading from '../components/ui/SectionHeading';
 import CtaBanner from '../components/sections/CtaBanner';
 import { LinkButton } from '../components/ui/Button';
 import { SITE } from '../data/site';
+import { asset } from '../lib/asset';
 
 // Fayda kartları — kısa ikon + başlık + açıklama
 const BENEFITS = [
@@ -117,7 +118,7 @@ export default function CosmeticsPage() {
           <motion.div {...fadeUp} transition={{ duration: 0.6 }} className="relative">
             <div className="relative overflow-hidden rounded-sm border border-zinc-200 bg-zinc-50">
               <img
-                src="assets/renders/cosmetics-bottles.png"
+                src={asset('assets/renders/cosmetics-bottles.png')}
                 alt="D2 Grup kozmetik ürün serisi şişe grubu"
                 className="w-full h-full object-cover aspect-[4/5]"
               />
@@ -214,7 +215,7 @@ export default function CosmeticsPage() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(255,255,255,0.05),transparent_45%)]" />
         <div className="absolute inset-0 z-0">
           <img
-            src="assets/renders/face-tech.jpg"
+            src={asset('assets/renders/face-tech.jpg')}
             alt=""
             aria-hidden
             className="w-full h-full object-cover opacity-10"

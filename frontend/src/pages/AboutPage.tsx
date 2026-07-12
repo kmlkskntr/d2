@@ -6,6 +6,7 @@ import CtaBanner from '../components/sections/CtaBanner';
 import { LinkButton } from '../components/ui/Button';
 import Icon from '../components/ui/Icon';
 import { SITE, STATS } from '../data/site';
+import { asset } from '../lib/asset';
 
 const PILLARS = [
   {
@@ -115,7 +116,7 @@ export default function AboutPage() {
           >
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm border border-zinc-100 shadow-2xl shadow-black/10">
               <img
-                src="assets/renders/experience.png"
+                src={asset('assets/renders/experience.png')}
                 alt="D2 Grup deneyimi"
                 className="w-full h-full object-cover"
               />
