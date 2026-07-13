@@ -118,7 +118,7 @@ export default function Header() {
               href={store.url}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-1.5 text-[11px] font-bold tracking-widest bg-white text-black hover:bg-zinc-200 px-5 py-2.5 transition-all duration-300 uppercase group/store"
+              className="inline-flex items-center gap-1.5 text-[11px] font-bold tracking-widest bg-brand-teal text-white hover:bg-brand-teal-dark px-5 py-2.5 transition-all duration-300 uppercase group/store"
             >
               <ShoppingBag size={13} />
               {storeLabel}
@@ -228,7 +228,7 @@ export default function Header() {
                     href={store.url}
                     target="_blank"
                     rel="noreferrer"
-                    className="w-full text-center inline-flex items-center justify-center gap-2 text-xs font-bold tracking-widest bg-white text-black py-3.5 hover:bg-zinc-200 transition-all uppercase"
+                    className="w-full text-center inline-flex items-center justify-center gap-2 text-xs font-bold tracking-widest bg-brand-teal text-white py-3.5 hover:bg-brand-teal-dark transition-all uppercase"
                   >
                     <ShoppingBag size={15} />
                     {storeLabel}

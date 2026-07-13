@@ -10,11 +10,13 @@ interface LogoProps {
 export default function Logo({ withWordmark = false, className = '', onClick }: LogoProps) {
   return (
     <Link to="/" onClick={onClick} className={`inline-flex items-center group ${className}`} aria-label="D2 Grup">
-      <img
-        src={logoUrl}
-        alt="D2 Grup"
-        className={`${withWordmark ? 'h-14 md:h-16' : 'h-10 md:h-12'} w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_0_20px_rgba(32,178,170,0.25)]`}
-      />
+      <span className="inline-flex items-center rounded-md border border-brand-teal/40 bg-black/30 backdrop-blur-sm px-3 py-1.5 transition-all duration-300 group-hover:border-brand-teal/70 group-hover:bg-black/40">
+        <img
+          src={logoUrl}
+          alt="D2 Grup"
+          className={`${withWordmark ? 'h-9 md:h-10' : 'h-7 md:h-8'} w-auto object-contain`}
+        />
+      </span>
     </Link>
   );
 }

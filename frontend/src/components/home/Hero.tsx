@@ -5,7 +5,7 @@ import { STATS } from '../../data/site';
 import Icon from '../ui/Icon';
 import { asset } from '../../lib/asset';
 
-const HERO_IMAGE = 'assets/renders/hero-device.jpg';
+const HERO_IMAGE = 'assets/renders/hero-device-teal.jpg';
 
 interface HeroProps {
   onPlayVideo?: () => void;
@@ -58,7 +58,7 @@ export default function Hero({ onPlayVideo }: HeroProps) {
           >
             <Link
               to="/urunler"
-              className="flex items-center gap-3 bg-white text-black font-semibold text-xs tracking-widest uppercase py-4 px-8 hover:bg-zinc-200 transition-all duration-300"
+              className="flex items-center gap-3 bg-brand-teal text-white font-semibold text-xs tracking-widest uppercase py-4 px-8 hover:bg-brand-teal-dark transition-all duration-300"
             >
               ÜRÜNLERİ KEŞFET <ArrowRight size={14} />
             </Link>
