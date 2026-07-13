@@ -16,9 +16,9 @@ export default function CategoryCards() {
           <div className="bg-zinc-50 p-10 flex flex-col justify-between border border-zinc-100 min-h-[420px] lg:min-h-0">
             <div>
               <span className="font-display font-black text-3xl md:text-4xl tracking-tight text-zinc-950 uppercase leading-none block mb-6">
-                ÜÇ TEKNOLOJİ,
+                BAŞTAN AYAĞA,
                 <br />
-                ÜÇ DOKUNUŞ.
+                TAM ÇÖZÜM.
               </span>
               <p className="text-zinc-600 font-sans text-sm font-light leading-relaxed mb-8 max-w-xs">
                 Yüz, vücut ve longevity alanlarında en ileri teknolojilerle medikal estetik standartlarında fark
@@ -29,7 +29,7 @@ export default function CategoryCards() {
               to="/urunler"
               className="inline-flex items-center gap-3 font-display font-extrabold text-[11px] tracking-widest text-zinc-950 hover:text-zinc-700 transition-colors uppercase"
             >
-              TÜM ÜRÜNLERİ KEŞFET
+              TÜM CİHAZLARI KEŞFET
               <motion.span animate={{ x: [0, 5, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}>
                 <ArrowRight size={14} />
               </motion.span>

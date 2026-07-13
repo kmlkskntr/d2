@@ -158,7 +158,7 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.5 }}
-            className="mt-14 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8 bg-zinc-950/40 backdrop-blur-md border border-white/10 p-8 md:px-10 rounded-sm relative overflow-hidden"
+            className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 bg-zinc-950/40 backdrop-blur-md border border-white/10 p-8 md:px-10 rounded-sm relative overflow-hidden"
           >
             <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
             {STATS.map((stat) => (

@@ -110,7 +110,7 @@ export default function Hero({ onPlayVideo }: HeroProps) {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.4 }}
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8 bg-zinc-950/40 backdrop-blur-md border border-white/10 p-8 md:px-10 rounded-sm relative overflow-hidden"
+          className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 bg-zinc-950/40 backdrop-blur-md border border-white/10 p-8 md:px-10 rounded-sm relative overflow-hidden"
         >
           <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
           {STATS.map((stat) => (
