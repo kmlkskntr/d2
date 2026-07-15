@@ -190,6 +190,20 @@ export default function ProductDetailPage() {
             {product.longDescription || product.description}
           </p>
 
+          {/* Alt başlıklı açıklama blokları (üretici içeriği) */}
+          {product.sections && product.sections.length > 0 && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8 mb-10 max-w-5xl">
+              {product.sections.map((sec) => (
+                <div key={sec.title} className="border-l-2 border-brand-teal/60 pl-5">
+                  <h3 className="font-display font-bold text-sm tracking-wide text-zinc-950 uppercase mb-2.5">
+                    {sec.title}
+                  </h3>
+                  <p className="font-sans font-light text-zinc-600 text-sm leading-relaxed">{sec.body}</p>
+                </div>
+              ))}
+            </div>
+          )}
+
           {/* Teknoloji etiketleri */}
           {product.technologies.length > 0 && (
             <div className="flex flex-wrap gap-2 mb-10">

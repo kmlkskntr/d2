@@ -9,7 +9,7 @@ export const SITE = {
   tagline: 'Medikal Estetik ve Güzellik Teknolojilerinde Lider',
   description:
     "D2 Grup Medikal, dünyanın en ileri teknolojiye sahip estetik ve güzellik cihazlarını Türkiye ile buluşturan lider distribütör. Yetkin teknik servis ve klinik eğitim desteğiyle klinik ve güzellik merkezlerinize değer katıyoruz.",
-  foundedYear: 2004,
+  foundedYear: 2012,
   phone: '0533 048 27 71',
   phoneHref: 'tel:+905330482771',
   whatsapp: '0533 048 27 71',
@@ -134,7 +134,7 @@ export const FOOTER_LINKS = {
 
 // Genel istatistikler (hero + kurumsal)
 export const STATS = [
-  { value: '20+', label: 'YILLIK DENEYİM', iconName: 'Award' },
+  { value: '10+', label: 'YILLIK DENEYİM', iconName: 'Award' },
   { value: '7', label: 'GLOBAL MARKA', iconName: 'Gem' },
   { value: '2000+', label: 'KURUMSAL PARTNER', iconName: 'Building2' },
   { value: '15', label: 'ÜLKEYE İHRACAT', iconName: 'Globe' },

@@ -68,7 +68,7 @@ export default function AboutPage() {
       <PageHeader
         eyebrow="KURUMSAL"
         title="BİZ KİMİZ"
-        description="2004'ten bu yana, dünyanın öncü medikal estetik ve güzellik teknolojilerini Türkiye'ye taşıyan D2 Grup; 20+ yıllık deneyimi, yetkin teknik servisi ve klinik eğitim desteğiyle sektörün lider distribütörüdür."
+        description="2012'den bu yana medikal cihazlar sektöründe faaliyet gösteren D2 Grup Medikal; aynı kalite ve güven anlayışını dermo-kozmetik ve güzellik cihazları alanına da taşıyarak klinik ve güzellik merkezlerinin yanında yer alır."
         backgroundImage="assets/renders/building.png"
         breadcrumbs={[{ label: 'Kurumsal' }]}
       />
@@ -88,26 +88,25 @@ export default function AboutPage() {
             />
             <div className="mt-6 space-y-5 font-sans font-light text-zinc-600 text-sm md:text-base leading-relaxed max-w-xl">
               <p>
-                <span className="font-semibold text-zinc-900">D2 Grup Medikal</span>, medikal cihazlar alanında uzun
-                yıllara dayanan deneyime sahip bir kuruluştur. Müşterilerimize kaliteli ürünler ve güvenilir hizmet
-                sunma misyonuyla yola çıktık. Sektördeki tecrübemiz ve uzman ekibimiz sayesinde, müşterilerimize en iyi
-                çözümleri sunabilmek için sürekli olarak kendimizi geliştirmekteyiz.
+                <span className="font-semibold text-zinc-900">2012 yılından bu yana</span> medikal cihazlar sektöründe
+                faaliyet gösteren D2 Grup Medikal, kaliteli ürünler ve güvenilir hizmet anlayışını temel ilke edinerek
+                yola çıktı. Yılların getirdiği tecrübe ve uzman kadromuzla, müşterilerimize her zaman en doğru çözümü
+                sunmak için kendimizi sürekli geliştiriyoruz.
               </p>
               <p>
-                Başlangıçta medikal cihazlar alanında başarıyla faaliyet gösterdikten sonra, şimdi de dermo-kozmetik
-                sektöründe aynı kalite ve güven prensipleriyle hizmet vermeye başladık. Medikal alandaki deneyimimizi ve
-                bilgi birikimimizi kozmetik sektörüne aktararak, müşterilerimize yenilikçi ürünler ve etkili çözümler
-                sunmayı hedefliyoruz.
+                Medikal cihazlar alanındaki başarılı geçmişimizin ardından, aynı kalite ve güven anlayışını
+                dermo-kozmetik ve güzellik cihazları sektörüne de taşıdık. Yıllar içinde edindiğimiz bilgi birikimini bu
+                yeni alana aktararak, müşterilerimize yenilikçi ürünler ve etkili çözümler sunmaya devam ediyoruz.
               </p>
               <p>
-                D2 Grup Medikal olarak, müşteri memnuniyetini her zaman ön planda tutuyor ve ihtiyaçlarına uygun
-                çözümler sunarak onların güvenini kazanmayı amaçlıyoruz. Profesyonel yaklaşımımız, güçlü iş etiğimiz ve
-                sektördeki lider konumumuzla, müşterilerimize en üst düzeyde hizmet vermeye devam edeceğiz.
+                D2 Grup Medikal olarak önceliğimiz her zaman müşteri memnuniyeti oldu. İhtiyaca özel çözümler üretmek,
+                güçlü bir iş etiği sürdürmek ve sektördeki öncü konumumuzu korumak için profesyonel yaklaşımımızdan taviz
+                vermiyoruz.
               </p>
               <p>
-                Sizin için en iyisini sunmak için sürekli olarak araştırma ve geliştirme çalışmalarını sürdürüyoruz. D2
-                Grup Medikal olarak, geleceğe yönelik yenilikçi adımlar atarak sektördeki liderliğimizi sürdürmeye
-                kararlıyız. Bize güvenen ve destekleyen tüm müşterilerimize teşekkür ederiz.
+                Ar-Ge çalışmalarımıza verdiğimiz önemle, geleceğe yönelik yenilikçi adımlar atmaya ve sektördeki
+                liderliğimizi sürdürmeye kararlıyız. Bugüne kadar bize duydukları güven için tüm müşterilerimize teşekkür
+                ederiz.
               </p>
             </div>
             <div className="mt-10">
@@ -132,9 +131,9 @@ export default function AboutPage() {
               />
             </div>
             <div className="absolute -bottom-5 -left-5 bg-brand-dark text-white px-6 py-5 rounded-sm border border-white/10 shadow-xl">
-              <span className="font-display font-black text-3xl tracking-tight block leading-none">20+</span>
+              <span className="font-display font-black text-3xl tracking-tight block leading-none">2012</span>
               <span className="font-mono text-[10px] tracking-[0.2em] text-white/60 uppercase mt-1 block">
-                Yıllık Deneyim
+                Kuruluş
               </span>
             </div>
           </motion.div>

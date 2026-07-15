@@ -50,6 +50,12 @@ export interface ProductVariant {
   note?: string;
 }
 
+// Ürün detay sayfasındaki alt başlıklı açıklama blokları
+export interface ProductSection {
+  title: string;
+  body: string;
+}
+
 export interface Product {
   slug: string;
   name: string;
@@ -61,6 +67,7 @@ export interface Product {
   tagline: string;
   description: string;
   longDescription?: string;
+  sections?: ProductSection[];
   image: string;
   gallery: string[];
   tags: string[];
