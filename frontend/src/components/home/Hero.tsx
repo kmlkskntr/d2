@@ -5,7 +5,7 @@ import { STATS } from '../../data/site';
 import Icon from '../ui/Icon';
 import { asset } from '../../lib/asset';
 
-const HERO_IMAGE = 'assets/renders/hero-device-teal.jpg';
+const HERO_IMAGE = 'assets/renders/hero-frozen-eyes-pro-x.jpg';
 
 interface HeroProps {
   onPlayVideo?: () => void;
