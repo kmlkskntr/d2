@@ -136,6 +136,7 @@ async function main() {
       priceNote: p.priceNote,
       featured: !!p.featured,
       isNew: !!p.isNew,
+      active: true,
       order: i,
       seoTitle: `${p.name} — ${p.brand} | D2 Grup`,
       seoDescription: p.tagline,
@@ -150,6 +151,15 @@ async function main() {
     });
   }
   console.log(`  ✔ ${PRODUCTS.length} ürün`);
+
+  // Eski/örnek ürünleri ARŞİVLE (silme YOK): products.ts'te olmayan slug'ları pasifleştir.
+  // Kayıtlar veritabanında kalır; active=false yapılarak sitede görünmez olur (geri alınabilir).
+  const activeSlugs = PRODUCTS.map((p) => p.slug);
+  const archived = await prisma.product.updateMany({
+    where: { slug: { notIn: activeSlugs } },
+    data: { active: false },
+  });
+  console.log(`  ✔ ${archived.count} eski ürün arşivlendi (pasif — silinmedi)`);
 
   // -------------------------------------------------- Kozmetik (başlangıç kataloğu)
   const COSMETICS = [
