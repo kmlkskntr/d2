@@ -21,6 +21,15 @@ export default function ProductDetailPage() {
   const related = getRelatedProducts(product);
   const gallery = product.gallery.length ? product.gallery : [product.image];
 
+  // Açıklaması/özellikleri olmayan (yalnızca görselli) ürünlerde boş bölümleri gizle
+  const hasDescription = Boolean(product.longDescription || product.description);
+  const hasAbout =
+    hasDescription ||
+    (product.sections?.length ?? 0) > 0 ||
+    product.technologies.length > 0 ||
+    product.features.length > 0 ||
+    product.indications.length > 0;
+
   const trustBadges = [
     { icon: ShieldCheck, label: 'Garanti & Sertifika' },
     { icon: Headphones, label: '7/24 Teknik Servis' },
@@ -178,6 +187,7 @@ export default function ProductDetailPage() {
       </section>
 
       {/* Açıklama + özellikler + kullanım alanları (zinc-50) */}
+      {hasAbout && (
       <section className="bg-zinc-50 py-20 px-6 md:px-12 border-b border-zinc-100">
         <div className="max-w-7xl mx-auto">
           <span className="font-display font-bold text-xs tracking-[0.3em] text-zinc-500 block mb-4 uppercase">
@@ -186,9 +196,11 @@ export default function ProductDetailPage() {
           <h2 className="font-display font-black text-3xl tracking-tight text-zinc-950 uppercase leading-tight mb-6">
             {product.name} NEDİR?
           </h2>
-          <p className="font-sans font-light text-zinc-600 text-sm md:text-base leading-relaxed mb-6 max-w-3xl">
-            {product.longDescription || product.description}
-          </p>
+          {hasDescription && (
+            <p className="font-sans font-light text-zinc-600 text-sm md:text-base leading-relaxed mb-6 max-w-3xl">
+              {product.longDescription || product.description}
+            </p>
+          )}
 
           {/* Alt başlıklı açıklama blokları (üretici içeriği) */}
           {product.sections && product.sections.length > 0 && (
@@ -224,44 +236,52 @@ export default function ProductDetailPage() {
           )}
 
           {/* Eşit yükseklikte iki kart: özellikler + kullanım alanları */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
-            {/* Öne çıkan özellikler */}
-            <div className="bg-white border border-zinc-100 rounded-sm p-8">
-              <h3 className="font-display font-bold text-sm tracking-wider text-zinc-950 uppercase mb-6">
-                ÖNE ÇIKAN ÖZELLİKLER
-              </h3>
-              <div className="flex flex-col gap-4">
-                {product.features.map((f) => (
-                  <div key={f} className="flex items-start gap-3">
-                    <span className="w-6 h-6 rounded-full bg-zinc-950 text-white flex items-center justify-center shrink-0 mt-0.5">
-                      <Check size={13} />
-                    </span>
-                    <span className="font-sans text-zinc-700 text-sm leading-relaxed">{f}</span>
+          {(product.features.length > 0 || product.indications.length > 0) && (
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
+              {/* Öne çıkan özellikler */}
+              {product.features.length > 0 && (
+                <div className="bg-white border border-zinc-100 rounded-sm p-8">
+                  <h3 className="font-display font-bold text-sm tracking-wider text-zinc-950 uppercase mb-6">
+                    ÖNE ÇIKAN ÖZELLİKLER
+                  </h3>
+                  <div className="flex flex-col gap-4">
+                    {product.features.map((f) => (
+                      <div key={f} className="flex items-start gap-3">
+                        <span className="w-6 h-6 rounded-full bg-zinc-950 text-white flex items-center justify-center shrink-0 mt-0.5">
+                          <Check size={13} />
+                        </span>
+                        <span className="font-sans text-zinc-700 text-sm leading-relaxed">{f}</span>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-            </div>
+                </div>
+              )}
 
-            {/* Kullanım alanları (koyu vurgu) */}
-            <div className="bg-zinc-950 text-white rounded-sm p-8">
-              <h3 className="font-display font-bold text-sm tracking-wider uppercase mb-6">KULLANIM ALANLARI</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {product.indications.map((ind) => (
-                  <div
-                    key={ind}
-                    className="flex items-center gap-2.5 bg-white/5 border border-white/10 rounded-sm px-3.5 py-3"
-                  >
-                    <ChevronRight size={14} className="text-white/40 shrink-0" />
-                    <span className="font-sans text-white/85 text-sm leading-tight">{ind}</span>
+              {/* Kullanım alanları (koyu vurgu) */}
+              {product.indications.length > 0 && (
+                <div className="bg-zinc-950 text-white rounded-sm p-8">
+                  <h3 className="font-display font-bold text-sm tracking-wider uppercase mb-6">KULLANIM ALANLARI</h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {product.indications.map((ind) => (
+                      <div
+                        key={ind}
+                        className="flex items-center gap-2.5 bg-white/5 border border-white/10 rounded-sm px-3.5 py-3"
+                      >
+                        <ChevronRight size={14} className="text-white/40 shrink-0" />
+                        <span className="font-sans text-white/85 text-sm leading-tight">{ind}</span>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
+                </div>
+              )}
             </div>
-          </div>
+          )}
         </div>
       </section>
+      )}
 
       {/* Teknik özellikler (beyaz) */}
+      {product.specs.length > 0 && (
       <section className="bg-white py-20 px-6 md:px-12 border-b border-zinc-100">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center gap-3 mb-8">
@@ -285,6 +305,7 @@ export default function ProductDetailPage() {
           </div>
         </div>
       </section>
+      )}
 
       {/* Before / After (varsa) — zinc-50 */}
       {product.beforeAfter && product.beforeAfter.length > 0 && (
